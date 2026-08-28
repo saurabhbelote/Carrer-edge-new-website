@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeCareer - Career Paths</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10b981',
+                        'primary-dark': '#059669',
+                        'brand-dark': '#061610',
+                        'brand-gray': '#f8f9fa',
+                        'brand-light': '#ecfdf5',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #10b981, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(to right, #22c55e, #eab308);
+        }
+    </style>
+</head>
+<body class="bg-[#f9fafb] text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-gray-200 transition-all duration-300">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                                                                <a href="index.html" class="flex items-center space-x-2 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.png" alt="EdgeCareer Logo" class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Home</a>
+                    <a href="career-paths.html" class="text-[#00b852] bg-[#ecfdf5] px-4 py-2 rounded-full font-bold text-sm tracking-wider">Career Paths</a>
+                    <a href="about.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">About</a>
+                    <a href="testimonials.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Testimonials</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Contact</a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden md:block">
+                    <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="gradient-btn text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5">
+                        <span>Book Free Consultation</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button --> <div class="md:hidden flex items-center"> <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
+            <div class="px-6 py-6 flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Home</a>
+                <a href="career-paths.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Career Paths</a>
+                <a href="about.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">About</a>
+                <a href="testimonials.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="contact.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Contact</a>
+                <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="gradient-btn text-white px-6 py-3 rounded-full font-semibold text-center mt-2 shadow-md">Book Free Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pricing Section 1: Choose Your Plan -->
+    <section class="pt-32 pb-16 px-4 max-w-7xl mx-auto">
+        <div class="text-center mb-16 animate-on-scroll">
+            <div class="inline-block bg-[#e6f8ec] text-[#00b852] px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                Invest In Your Future
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">Choose Your Plan</h1>
+            <p class="text-gray-500 max-w-2xl mx-auto">Select the perfect plan to accelerate your career trajectory. Designed for ambitious professionals ready to scale.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+            
+            <!-- Tier 1 -->
+            <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll">
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 1</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">LAUNCH</h3>
+                <div class="text-4xl font-black text-[#00b852] mb-8">₹5,999</div>
+                
+                <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Resume Review & Overhaul
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        LinkedIn Profile Optimization
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        1x Mock Interview Session
+                    </li>
+                </ul>
+                <button onclick="openRazorpay(5999, 'LAUNCH')" class="w-full border-2 border-primary text-primary hover:bg-[#e6f8ec] transition-colors py-3 rounded-full font-bold">Book Now</button>
+            </div>
+
+            <!-- Tier 2 (Highlighted) -->
+            <div class="bg-white rounded-[2rem] p-8 md:p-10 border-2 border-[#00b852] shadow-xl relative transform md:scale-105 z-10 animate-on-scroll" style="animation-delay: 0.1s;">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00b852] text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                    Most Popular
+                </div>
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 2</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro Upgrade</h3>
+                <div class="text-4xl font-black text-[#00b852] mb-8">₹11,999</div>
+                
+                <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                    <li class="flex items-start font-medium text-gray-800">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Everything in LAUNCH
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        3x 1:1 Mentorship Sessions
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Exclusive Job Alerts
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Portfolio Review
+                    </li>
+                </ul>
+                <button onclick="openRazorpay(11999, 'Pro Upgrade')" class="w-full bg-[#e6f8ec] text-[#00b852] py-3 rounded-full font-bold hover:bg-[#00b852] hover:text-white transition-colors border border-transparent">Book Now</button>
+            </div>
+
+            <!-- Tier 3 -->
+            <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden animate-on-scroll" style="animation-delay: 0.2s;">
+                <!-- Yellow Banner -->
+                <div class="absolute top-6 -right-12 bg-[#fde047] text-black text-[9px] font-black uppercase tracking-widest py-1.5 px-12 rotate-45 shadow-sm border-b border-yellow-500/20">
+                    NO REFUND POLICY
+                </div>
+                
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 3</div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Ultimate Upgrade</h3>
+                <div class="text-4xl font-black text-[#00b852] mb-8">₹18,999</div>
+                
+                <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                    <li class="flex items-start font-medium text-gray-800">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Everything in Pro Upgrade
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Unlimited 1:1 Mentorship (3 Months)
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Direct Referrals (Where Applicable)
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                        Salary Negotiation Coaching
+                    </li>
+                </ul>
+                <button onclick="openRazorpay(18999, 'Ultimate Upgrade')" class="w-full border-2 border-primary text-primary hover:bg-[#e6f8ec] transition-colors py-3 rounded-full font-bold">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section 2: Premium Resume Solutions -->
+    <section class="py-16 px-4 bg-[#f4f5f5]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Premium Resume Solutions</h2>
+                <p class="text-gray-500">Targeted upgrades for your professional presentation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-white rounded-[1.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow animate-on-scroll">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-gray-900">Basic Resume</h4>
+                        <span class="bg-gray-100 text-gray-600 text-[9px] font-bold px-2 py-1 rounded-sm uppercase">Save 20%</span>
+                    </div>
+                    <div class="text-2xl font-black text-[#00b852] mb-6">₹799</div>
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8">
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> ATS Friendly Format</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 1 Revision</li>
+                    </ul>
+                    <button onclick="openRazorpay(799, 'Basic Resume')" class="w-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors py-2.5 rounded-lg font-bold text-sm">Book Now</button>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-[1.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-gray-900">Pro Resume</h4>
+                        <span class="bg-gray-100 text-gray-600 text-[9px] font-bold px-2 py-1 rounded-sm uppercase">Save 30%</span>
+                    </div>
+                    <div class="text-2xl font-black text-[#00b852] mb-6">₹999</div>
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8">
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> ATS Friendly Format</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Custom Cover Letter</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 2 Revisions</li>
+                    </ul>
+                    <button onclick="openRazorpay(1999, 'Pro Resume')" class="w-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors py-2.5 rounded-lg font-bold text-sm">Book Now</button>
+                </div>
+
+                <!-- Card 3 (Highlighted) -->
+                <div class="bg-white rounded-[1.5rem] p-6 border-2 border-[#00b852] shadow-md relative animate-on-scroll transform md:-translate-y-2" style="animation-delay: 0.2s;">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#00b852] text-white px-3 py-1 rounded-sm text-[8px] font-bold uppercase tracking-widest">
+                        Elite Choice
+                    </div>
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-gray-900">Ultimate Career</h4>
+                        <span class="bg-yellow-100 text-yellow-700 text-[9px] font-bold px-2 py-1 rounded-sm uppercase">Save 45%</span>
+                    </div>
+                    <div class="text-2xl font-black text-[#00b852] mb-6">₹1,499</div>
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8">
+                        <li class="flex items-start font-medium text-gray-800"><svg class="w-4 h-4 text-[#00b852] mr-2 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Pro Resume + Cover Letter</li>
+                        <li class="flex items-start"><svg class="w-4 h-4 text-[#00b852] mr-2 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> LinkedIn Optimization</li>
+                        <li class="flex items-start"><svg class="w-4 h-4 text-[#00b852] mr-2 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Unlimited Revisions</li>
+                    </ul>
+                    <button onclick="openRazorpay(11499, 'Ultimate Career')" class="w-full bg-[#00b852] text-white hover:bg-green-600 transition-colors py-2.5 rounded-lg font-bold text-sm shadow-md">Book Now</button>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-[1.5rem] p-6 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="font-bold text-gray-900">LinkedIn Opt.</h4>
+                        <span class="bg-gray-100 text-gray-600 text-[9px] font-bold px-2 py-1 rounded-sm uppercase">Save 25%</span>
+                    </div>
+                    <div class="text-2xl font-black text-[#00b852] mb-6">₹999</div>
+                    <ul class="space-y-3 text-xs text-gray-600 mb-8">
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Profile Makeover</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Keyword Optimization</li>
+                        <li class="flex items-center"><svg class="w-4 h-4 text-gray-400 mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Networking Strategy</li>
+                    </ul>
+                    <button onclick="openRazorpay(1999, 'LinkedIn Opt.')" class="w-full bg-gray-100 text-gray-600 hover:bg-gray-200 transition-colors py-2.5 rounded-lg font-bold text-sm">Book Now</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 bg-[#f4f5f5]">
+        <div class="max-w-4xl mx-auto bg-gradient-to-br from-[#ecfdf5] to-[#f0fdf4] rounded-[2rem] p-12 text-center shadow-sm border border-green-100 animate-on-scroll">
+            <div class="w-12 h-12 mx-auto bg-[#dcfce7] text-[#166534] rounded-full flex items-center justify-center mb-6">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Not Sure Which Path to Choose?</h2>
+            <p class="text-gray-600 mb-8 max-w-lg mx-auto">Schedule a brief call with our career advisors to evaluate your current trajectory and find the right plan for you.</p>
+            <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="inline-block gradient-btn text-white px-8 py-3.5 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                Book Free Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-16 px-4">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between">
+            
+            <!-- Logo & Copyright -->
+            <div class="mb-10 md:mb-0 max-w-xs">
+                <a href="index.html" class="flex items-center space-x-2 mb-4 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.png" alt="EdgeCareer Logo" class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed max-w-xs">
+                    Transforming careers, one professional at a time. Expert coaching, proven strategies, guaranteed results.
+                </p>
+                <div class="flex space-x-5 mb-6">
+                    <a href="https://www.instagram.com/edge.career.in?igsi=OGh5b2dkazR2Zml6" target="_blank" class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="Instagram">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/edgecareer/" target="_blank" class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="LinkedIn">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 font-mono">
+                    &copy; 2024 EdgeCareer. All rights reserved.
+                </p>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="index.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Home</a>
+                <a href="career-paths.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Career Paths</a>
+                <a href="about.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">About</a>
+                <a href="testimonials.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="contact.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Contact</a>
+            </div>
+            
+            <!-- Legal Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Privacy Policy</a>
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Terms of Service</a>
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Cookie Policy</a>
+            </div>
+            
+            <!-- Newsletter -->
+            <div>
+                <div class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">Subscribe To Our Newsletter</div>
+                <form class="flex" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
+                    <button type="submit" class="gradient-btn text-white text-sm font-bold px-6 py-3 rounded-r-lg hover:shadow-md transition-shadow">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </footer>
+
+
+
+    <!-- Intersection Observer for Scroll Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        });
+    </script>
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        async function openRazorpay(amount, planName) {
+            try {
+                const API_URL = "https://asia-south1-jobform-automator-website.cloudfunctions.net/razorpayApi";
+
+                // Step 1: Create Razorpay order on backend
+                const response = await fetch(`${API_URL}/create-order`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: amount, productName: planName })
+                });
+                
+                const order = await response.json();
+                
+                if (!response.ok || order.error) {
+                    throw new Error(order.error || "Failed to create payment order.");
+                }
+
+                function showModal(isSuccess, title, message) {
+                    const id = 'payment-modal-' + Math.random().toString(36).substr(2, 9);
+                    const color = isSuccess ? 'green' : 'red';
+                    const icon = isSuccess 
+                        ? `<svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`
+                        : `<svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>`;
+                    
+                    const modalHtml = `
+                        <div id="${id}" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
+                            <div class="bg-white rounded-3xl p-8 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300">
+                                <div class="w-16 h-16 bg-${color}-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                    ${icon}
+                                </div>
+                                <h3 class="text-2xl font-bold text-center text-gray-900 mb-2">${title}</h3>
+                                <p class="text-center text-gray-500 mb-8">${message}</p>
+                                <button onclick="document.getElementById('${id}').remove()" class="w-full bg-${isSuccess ? '[#00b852]' : color + '-500'} text-white font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
+                                    ${isSuccess ? 'Awesome!' : 'Close'}
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    document.body.insertAdjacentHTML('beforeend', modalHtml);
+                    setTimeout(() => {
+                        const modal = document.getElementById(id);
+                        if (modal) {
+                            modal.classList.remove('opacity-0');
+                            modal.children[0].classList.remove('scale-95');
+                        }
+                    }, 10);
+                }
+
+                // Step 2: Open Razorpay Checkout Modal
+                var options = {
+                    "key": order.keyId,
+                    "amount": order.amount,
+                    "currency": order.currency,
+                    "name": "EdgeCareer",
+                    "description": order.productName,
+                    "order_id": order.orderId,
+                    "handler": async function (paymentResponse) {
+                        try {
+                            // Step 3: Verify signature on backend
+                            const verifyResponse = await fetch(`${API_URL}/verify-payment`, {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(paymentResponse)
+                            });
+
+                            const result = await verifyResponse.json();
+
+                            if (verifyResponse.ok && result.verified) {
+                                showModal(true, "Payment Successful!", "Your " + planName + " is confirmed. We will reach out to you shortly.");
+                            } else {
+                                showModal(false, "Verification Failed", result.error || "Invalid Signature");
+                            }
+                        } catch (err) {
+                            showModal(false, "Verification Error", err.message);
+                        }
+                    },
+                    "theme": {
+                        "color": "#00b852"
+                    },
+                    "modal": {
+                        "ondismiss": function() {
+                            console.log("Payment modal closed by user.");
+                        }
+                    }
+                };
+                
+                var rzp = new Razorpay(options);
+                
+                rzp.on('payment.failed', function (response){
+                    showModal(false, "Payment Failed", response.error.description);
+                });
+                
+                rzp.open();
+            } catch (error) {
+                console.error("Payment error:", error);
+                alert("Payment error: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
