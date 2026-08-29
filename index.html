@@ -92,7 +92,7 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center space-x-8">
                     <a href="index.html" class="text-[#00b852] bg-[#ecfdf5] px-4 py-2 rounded-full font-bold text-sm tracking-wider">Home</a>
                     <a href="career-paths.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Career Paths</a>
                     <a href="about.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">About</a>
@@ -101,14 +101,14 @@
                 </div>
 
                 <!-- CTA -->
-                <div class="hidden md:block">
+                <div class="hidden lg:block">
                     <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="gradient-btn text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5">
                         <span>Book Free Consultation</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </a>
                 </div>
 
-                <!-- Mobile menu button --> <div class="md:hidden flex items-center"> <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all focus:outline-none">
+                <!-- Mobile menu button --> <div class="lg:hidden flex items-center"> <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -118,7 +118,7 @@
         </div>
     
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
             <div class="px-6 py-6 flex flex-col space-y-6">
                 <a href="index.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Home</a>
                 <a href="career-paths.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Career Paths</a>
@@ -593,94 +593,154 @@
             <!-- Pricing Cards -->
             <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 items-start max-w-5xl mx-auto">
                 
-                <!-- Launch Plan -->
-                <div class="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm animate-on-scroll">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Launch</h3>
-                    <p class="text-gray-500 text-sm mb-6">Essential tools for job seekers.</p>
-                    <div class="text-4xl font-bold text-gray-900 mb-8">₹4,999</div>
+                <!-- Tier 1 -->
+                <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll">
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 1</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">LAUNCH</h3>
+                    <div class="text-lg text-gray-400 line-through mb-1">₹18,000</div>
+                    <div class="text-4xl font-black text-[#00b852] mb-2">₹5,999</div>
+                    <div class="text-sm font-medium text-gray-600 mb-6">1-Month Intensive</div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Resume Optimization
+                    <div class="flex items-center font-bold text-gray-800 mb-6 text-sm">
+                        <svg class="w-5 h-5 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        4 Mock Interviews
+                    </div>
+
+                    <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            1:1 Mentorship (10+ yrs exp)
                         </li>
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Cover Letter Template
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            15 Job Alerts
                         </li>
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            LinkedIn Profile Audit
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Unlimited Resumes per JD/LinkedIn/Naukri Optimization
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            4 Mock Interviews + Feedback
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            100+ Q&A Interview Kit
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Company & Career Insights
                         </li>
                     </ul>
-                    
-                    <button onclick="openRazorpay(4999, 'Launch Plan')" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-xl transition-colors duration-200">
-                        Select Plan
-                    </button>
+                    <button onclick="openRazorpay(5999, 'LAUNCH')" class="w-full border-2 border-primary text-primary hover:bg-[#e6f8ec] transition-colors py-3 rounded-full font-bold">Book Now</button>
                 </div>
 
-                <!-- Pro Plan -->
-                <div class="bg-brand-light rounded-[2.5rem] p-8 border-2 border-primary shadow-xl relative transform md:-translate-y-4 animate-on-scroll" style="animation-delay: 0.1s;">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 gradient-btn text-white text-[10px] font-black tracking-widest uppercase px-4 py-1.5 rounded-full shadow-md">
+                <!-- Tier 2 (Highlighted) -->
+                <div class="bg-white rounded-[2rem] p-8 md:p-10 border-2 border-[#00b852] shadow-xl relative transform md:scale-105 z-10 animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#00b852] text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
                         Most Popular
                     </div>
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 2</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro Upgrade</h3>
+                    <div class="text-lg text-gray-400 line-through mb-1">₹32,000</div>
+                    <div class="text-4xl font-black text-[#00b852] mb-2">₹11,999</div>
+                    <div class="text-sm font-medium text-gray-600 mb-6">2-Month Power Plan</div>
                     
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Pro</h3>
-                    <p class="text-gray-600 text-sm mb-6">Complete interview prep package.</p>
-                    <div class="text-4xl font-bold text-gray-900 mb-8">₹9,999</div>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-sm text-gray-800">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Everything in Launch
+                    <div class="flex items-center font-bold text-gray-800 mb-6 text-sm">
+                        <svg class="w-5 h-5 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        7 Mock Interviews
+                    </div>
+
+                    <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            1:1 Mentorship (10+ yrs exp)
                         </li>
-                        <li class="flex items-center text-sm text-gray-800">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            2 Mock Interviews
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            15 Job Alerts
                         </li>
-                        <li class="flex items-center text-sm text-gray-800">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Job Search Strategy
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Everything in Launch plus:
                         </li>
-                        <li class="flex items-center text-sm text-gray-800">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            30 Days Email Support
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            7 Mock Interviews + Coaching
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Priority Mentor Access
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Resume for Every Application
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Company Culture Deep-Dives
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Referral Pipeline Activation
                         </li>
                     </ul>
-                    
-                    <button onclick="openRazorpay(9999, 'Pro Plan')" class="w-full gradient-btn text-white font-bold py-3 px-4 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
-                        Select Pro Plan
-                    </button>
+                    <button onclick="openRazorpay(11999, 'Pro Upgrade')" class="w-full bg-[#e6f8ec] text-[#00b852] py-3 rounded-full font-bold hover:bg-[#00b852] hover:text-white transition-colors border border-transparent">Book Now</button>
                 </div>
 
-                <!-- Ultimate Plan -->
-                <div class="bg-white rounded-[2.5rem] p-8 border border-gray-200 shadow-sm animate-on-scroll" style="animation-delay: 0.2s;">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Ultimate</h3>
-                    <p class="text-gray-500 text-sm mb-6">1:1 dedicated mentorship.</p>
-                    <div class="text-4xl font-bold text-gray-900 mb-8">₹19,999</div>
+                <!-- Tier 3 -->
+                <div class="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden animate-on-scroll" style="animation-delay: 0.2s;">
+                    <!-- Yellow Banner -->
+                    <div class="absolute top-6 -right-12 bg-[#fde047] text-black text-[9px] font-black uppercase tracking-widest py-1.5 px-12 rotate-45 shadow-sm border-b border-yellow-500/20">
+                        50% REFUND POLICY - IF NO JOBS
+                    </div>
                     
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Everything in Pro
+                    <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Tier 3</div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Ultimate Upgrade</h3>
+                    <div class="text-lg text-gray-400 line-through mb-1">₹45,000</div>
+                    <div class="text-4xl font-black text-[#00b852] mb-2">₹18,999</div>
+                    <div class="text-sm font-medium text-gray-600 mb-6">3-Month Mastery</div>
+                    
+                    <div class="flex items-center font-bold text-gray-800 mb-6 text-sm">
+                        <svg class="w-5 h-5 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        10 Mock Interviews
+                    </div>
+
+                    <ul class="space-y-4 mb-10 text-sm text-gray-600">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            1:1 Mentorship (10+ yrs exp)
                         </li>
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Unlimited Mock Interviews
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            15 Job Alerts
                         </li>
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Negotiation Coaching
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Everything in Pro Upgrade plus:
                         </li>
-                        <li class="flex items-center text-sm text-gray-700">
-                            <svg class="w-5 h-5 text-primary mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Mentorship until Placed
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            10 Mock Interviews + Feedback
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Full Career Roadmap
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Executive LinkedIn Branding
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Salary Negotiation Mastery
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 text-[#00b852] mr-3 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            Career Pivot Support
                         </li>
                     </ul>
-                    
-                    <button onclick="openRazorpay(19999, 'Ultimate Plan')" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-xl transition-colors duration-200">
-                        Select Plan
-                    </button>
+                    <button onclick="openRazorpay(18999, 'Ultimate Upgrade')" class="w-full border-2 border-primary text-primary hover:bg-[#e6f8ec] transition-colors py-3 rounded-full font-bold">Book Now</button>
                 </div>
             </div>
         </div>
@@ -741,7 +801,7 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-100 py-16 px-4">
-        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             
             <!-- Logo & Copyright -->
             <div class="mb-10 md:mb-0 max-w-xs">
@@ -774,6 +834,7 @@
                 <a href="career-paths.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Career Paths</a>
                 <a href="about.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">About</a>
                 <a href="testimonials.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="faq.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">FAQ</a>
                 <a href="contact.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Contact</a>
             </div>
             
