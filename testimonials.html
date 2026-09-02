@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeCareer - Testimonials</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#00b852',
+                        'primary-dark': '#009b45',
+                        'brand-gray': '#f8f9fa',
+                        'brand-light': '#e6f8ec',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn.active {
+            background-color: #00b852;
+            color: white;
+            border-color: #00b852;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(to right, #22c55e, #eab308);
+        }
+    </style>
+</head>
+
+<body class="bg-[#fafafa] text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300">
+        <div class="w-full mx-auto px-4 md:px-8 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="index.html"
+                    class="flex items-center space-x-2 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.webp" alt="EdgeCareer Logo"
+                        class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html"
+                        class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Home</a>
+                    <a href="career-paths.html"
+                        class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Career
+                        Paths</a>
+                    <a href="about.html"
+                        class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">About</a>
+                    <a href="testimonials.html"
+                        class="text-[#00b852] bg-[#ecfdf5] px-4 py-2 rounded-full font-bold text-sm tracking-wider">Testimonials</a>
+                    <a href="contact.html"
+                        class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Contact</a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden lg:block">
+                    <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank"
+                        class="gradient-btn text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5">
+                        <span>Book Free Consultation</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn"
+                        onclick="document.getElementById('mobile-menu').classList.toggle('hidden');"
+                        class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden lg:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
+            <div class="px-6 py-6 flex flex-col space-y-6 text-sm">
+                <a href="index.html" class="text-gray-500 font-semibold transition-colors">Home</a>
+                <a href="career-paths.html" class="text-gray-500 font-semibold transition-colors">Career Paths</a>
+                <a href="about.html" class="text-gray-500 font-semibold transition-colors">About</a>
+                <a href="testimonials.html"
+                    class="text-primary font-bold border-l-2 border-primary pl-2 transition-colors">Testimonials</a>
+                <a href="contact.html" class="text-gray-500 font-semibold transition-colors">Contact</a>
+                <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank"
+                    class="gradient-btn text-white px-6 py-3 rounded-md font-bold text-center mt-2 shadow-md uppercase tracking-wider text-xs hover:shadow-lg transition-all">Book
+                    Free Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-8 px-4 relative">
+        <div class="max-w-4xl mx-auto text-center relative z-10 py-12">
+            <div
+                class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                    </path>
+                </svg>
+                <span>REAL RESULTS</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight">
+                Success <span class="text-primary">Stories</span>
+            </h1>
+            <p class="text-gray-500 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                Discover how EdgeCareer has helped professionals like you land their dream jobs and accelerate their
+                career growth.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-4 px-4 max-w-7xl mx-auto">
+        <div
+            class="max-w-6xl mx-auto bg-white rounded-3xl p-8 border border-gray-100 shadow-sm transition-shadow hover:shadow-md">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2 animate-float inline-block">500+
+                    </div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Resumes Written</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">85%</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Job Placement Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">4.9/5</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Average Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">48hrs</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Avg. Turnaround</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Infinity Banner Image -->
+        <div class="mt-12 w-full max-w-xl mx-auto relative group">
+            <div class="w-full animate-float flex items-center justify-center">
+                <img src="assets/Testimonal.webp" alt="EdgeCareer Success Metrics"
+                    class="w-full h-auto object-contain hover:scale-[1.06] transition-transform duration-500 ease-in-out"
+                    style="clip-path: inset(4px round 1.5rem);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters & Grid Section -->
+    <section class="py-12 px-4 pb-24">
+        <div class="max-w-[1400px] mx-auto">
+
+
+            <!-- Filters -->
+            <div class="flex flex-wrap justify-center gap-2 mb-16">
+                <button
+                    class="filter-btn active bg-primary text-white px-5 py-2 rounded-full text-xs font-semibold tracking-wide border border-primary transition-all"
+                    data-filter="all">All Stories</button>
+                <button
+                    class="filter-btn bg-[#f3f4f6] text-gray-600 px-5 py-2 rounded-full text-xs font-semibold tracking-wide border border-transparent hover:bg-gray-200 transition-all"
+                    data-filter="resume">Resume Writing</button>
+                <button
+                    class="filter-btn bg-[#f3f4f6] text-gray-600 px-5 py-2 rounded-full text-xs font-semibold tracking-wide border border-transparent hover:bg-gray-200 transition-all"
+                    data-filter="linkedin">LinkedIn Optimization</button>
+                <button
+                    class="filter-btn bg-[#f3f4f6] text-gray-600 px-5 py-2 rounded-full text-xs font-semibold tracking-wide border border-transparent hover:bg-gray-200 transition-all"
+                    data-filter="interview">Interview Prep</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="testimonials-grid">
+
+                <!-- Card 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="interview">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Vikrant Joshi" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Vikrant Joshi</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Senior Manager at Wipro</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "I was struggling with behavioral questions for senior roles, but EdgeCareer's one-on-one
+                            mock sessions helped me ace my interview with Wipro. Truly transformative."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Landed Job in 3 weeks</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="resume">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Sneha Rao" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Sneha Rao</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Software Engineer at TCS</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "The resume-building support and skill assessments were game changers for me. EdgeCareer's
+                            platform made me realize my strengths and prepared me for my dream job at TCS."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Got 5 interviews in 2 weeks</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="interview">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Priya Sharma" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Priya Sharma</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Intern at Deloitte</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "As a final-year student, I had no idea what to expect in job interviews. EdgeCareer's
+                            resources and interactive modules made me feel confident and ready. I landed an internship
+                            at Deloitte."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Secured internship offer</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="interview">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Arjun Verma" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Arjun Verma</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Fresher at Infosys</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "EdgeCareer's mock interviews boosted my confidence immensely! I cleared my interview with
+                            Infosys thanks to their expert feedback and tailored preparation."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>First job offer received</span>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="interview">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Kavita Parmar" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Kavita Parmar</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Business Analyst at HDFC Bank</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "EdgeCareer's mentorship program was exceptional. The insights I received about industry
+                            trends helped me prepare for my case-study interviews."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Career switch successful</span>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="resume">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Amit Gupta" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Amit Gupta</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Finance Pro at Tech Sector</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "Switching industries felt overwhelming, but EdgeCareer's personalized guidance helped me
+                            secure a position in tech after 5 years in finance."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Industry switch in 4 months</span>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="linkedin">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Rahul Mehta" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Rahul Mehta</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Marketing Manager at Amazon</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "The LinkedIn optimization service transformed my profile visibility. I started getting
+                            recruiter messages within days!"
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>3x profile views increase</span>
+                    </div>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="resume">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Anjali Singh" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Anjali Singh</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Data Scientist at Google</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "EdgeCareer helped me craft a resume that highlighted my unique skills. Within a month, I
+                            received an offer from Google!"
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Dream job achieved</span>
+                    </div>
+                </div>
+
+                <!-- Card 9 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="interview">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Karan Desai" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Karan Desai</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Product Manager at Microsoft</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "The interview coaching was incredible. They prepared me for every possible scenario and I
+                            aced my Microsoft interviews."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Cleared 5 interview rounds</span>
+                    </div>
+                </div>
+
+                <!-- Card 10 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="linkedin">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Meera Nair" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Meera Nair</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">HR Manager at Accenture</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "Professional resume writing combined with LinkedIn optimization helped me transition to a
+                            senior HR role at Accenture."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Senior position secured</span>
+                    </div>
+                </div>
+
+                <!-- Card 11 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="resume">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Rohan Kapoor" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Rohan Kapoor</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">Sales Exec at Salesforce</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "Their ATS optimization techniques are spot-on. My resume started getting noticed by top
+                            companies immediately."
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>10+ interview calls</span>
+                    </div>
+                </div>
+
+                <!-- Card 12 -->
+                <div class="bg-white rounded-3xl p-8 shadow-[0_4px_20px_-5px_rgba(0,0,0,0.05)] border border-gray-100 flex flex-col justify-between"
+                    data-category="resume">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&auto=format&fit=crop&crop=face&q=80" alt="Pooja Bhatt" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Pooja Bhatt</h4>
+                                <p class="text-[10px] text-gray-500 font-medium">UX Designer at Adobe</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-[13px] leading-relaxed mb-6 font-medium">
+                            "The personalized approach and attention to detail in my resume made all the difference.
+                            Highly recommended!"
+                        </p>
+                    </div>
+                    <div
+                        class="inline-flex items-center space-x-1.5 bg-[#e6f8ec] text-[#00b852] px-3 py-1.5 rounded-lg text-[10px] font-bold tracking-wide w-fit">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                        <span>Portfolio views increased</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-16 px-4">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+            <!-- Logo & Copyright -->
+            <div class="mb-10 md:mb-0 max-w-xs">
+                <a href="index.html"
+                    class="flex items-center space-x-2 mb-4 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.webp" alt="EdgeCareer Logo"
+                        class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed max-w-xs">
+                    Transforming careers, one professional at a time. Expert coaching, proven strategies, guaranteed
+                    results.
+                </p>
+                <div class="flex space-x-5 mb-6">
+                    <a href="https://www.instagram.com/edge.career.in?igsi=OGh5b2dkazR2Zml6" target="_blank"
+                        class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="Instagram">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/edgecareer/" target="_blank"
+                        class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="LinkedIn">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 font-mono">
+                    &copy; 2024 EdgeCareer. All rights reserved.
+                </p>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="index.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Home</a>
+                <a href="career-paths.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Career
+                    Paths</a>
+                <a href="about.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">About</a>
+                <a href="testimonials.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="faq.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">FAQ</a>
+                <a href="contact.html"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Contact</a>
+            </div>
+
+            <!-- Legal Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="#"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Privacy
+                    Policy</a>
+                <a href="#"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Terms
+                    of Service</a>
+                <a href="#"
+                    class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Cookie
+                    Policy</a>
+            </div>
+
+            <!-- Newsletter -->
+            <div>
+                <div class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">Subscribe To Our Newsletter
+                </div>
+                <form class="flex" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email"
+                        class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
+                    <button type="submit"
+                        class="gradient-btn text-white text-sm font-bold px-6 py-3 rounded-r-lg hover:shadow-md transition-shadow">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Testimonial Filters Logic
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const grid = document.getElementById('testimonials-grid');
+            if (grid) {
+                const cards = Array.from(grid.children);
+
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        // Reset all buttons
+                        filterBtns.forEach(b => {
+                            b.classList.remove('bg-primary', 'text-white', 'active', 'border-primary');
+                            b.classList.add('bg-[#f3f4f6]', 'text-gray-600', 'border-transparent');
+                        });
+                        // Activate clicked
+                        btn.classList.remove('bg-[#f3f4f6]', 'text-gray-600', 'border-transparent');
+                        btn.classList.add('bg-primary', 'text-white', 'active', 'border-primary');
+
+                        const filter = btn.dataset.filter;
+                        cards.forEach(card => {
+                            if (filter === 'all' || card.dataset.category === filter) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Mobile Menu
+
+        });
+    </script>
+</body>
+
+</html>

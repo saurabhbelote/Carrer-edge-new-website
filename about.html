@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeCareer - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#10b981',
+                        'primary-dark': '#059669',
+                        'brand-dark': '#061610',
+                        'brand-gray': '#f8f9fa',
+                        'brand-light': '#ecfdf5',
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #10b981, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-btn {
+            background: linear-gradient(to right, #22c55e, #eab308);
+        }
+    </style>
+</head>
+<body class="bg-[#f9fafb] text-gray-800 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass border-b border-gray-200 transition-all duration-300">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                                                                <a href="index.html" class="flex items-center space-x-2 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.webp" alt="EdgeCareer Logo" class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Home</a>
+                    <a href="career-paths.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Career Paths</a>
+                    <a href="about.html" class="text-[#00b852] bg-[#ecfdf5] px-4 py-2 rounded-full font-bold text-sm tracking-wider">About</a>
+                    <a href="testimonials.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Testimonials</a>
+                    <a href="contact.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Contact</a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden lg:block">
+                    <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="gradient-btn text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center space-x-2 transform hover:-translate-y-0.5">
+                        <span>Book Free Consultation</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button --> <div class="lg:hidden flex items-center"> <button id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden');" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
+            <div class="px-6 py-6 flex flex-col space-y-6">
+                <a href="index.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Home</a>
+                <a href="career-paths.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Career Paths</a>
+                <a href="about.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">About</a>
+                <a href="testimonials.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="contact.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Contact</a>
+                <a href="https://calendly.com/khaleelahmedd199/30min" target="_blank" class="gradient-btn text-white px-6 py-3 rounded-full font-semibold text-center mt-2 shadow-md">Book Free Consultation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-16 px-4 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10 animate-fade-in-up py-16">
+            
+            <!-- True Infinity Symbol SVG Background -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+                <svg viewBox="0 0 110 50" class="w-full max-w-[850px] h-auto text-[#dcfce7]" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M 30 10 A 20 15 0 1 0 30 40 C 55 40 55 10 80 10 A 20 15 0 1 1 80 40 C 55 40 55 10 30 10 Z" />
+                </svg>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 flex flex-col items-center justify-center">
+                <span class="bg-gray-100 text-gray-500 text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-8">Who We Are</span>
+                
+                <h1 class="text-5xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">
+                    About <span class="text-[#00b852]">EdgeCareer</span>
+                </h1>
+                
+                <p class="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                    Empowering professionals to achieve their career goals through expert resume writing, LinkedIn optimization, and interview coaching.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="pb-16 px-4">
+        <div class="max-w-7xl mx-auto bg-white rounded-3xl p-8 border border-gray-100 shadow-sm animate-on-scroll">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x divide-gray-100">
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">500+</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Resumes Written</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">85%</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Job Placement Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">4.9/5</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Average Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-5xl font-black text-[#00b852] mb-2">48hrs</div>
+                    <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Avg. Turnaround</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="py-12 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16 justify-between">
+            <!-- Left -->
+            <div class="w-full md:w-[47%] animate-on-scroll">
+                <h2 class="text-4xl font-black text-gray-900 mb-6 tracking-tight">Our Mission</h2>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    EdgeCareer was founded in 2020 with a simple yet powerful mission: to help professionals at every stage of their career journey land their dream jobs. We recognized that many talented individuals were being overlooked simply because their resumes weren't optimized for modern Applicant Tracking Systems (ATS).
+                </p>
+                <div class="flex flex-wrap gap-3 mb-10">
+                    <span class="bg-[#dcfce7] text-[#166534] px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">Excellence</span>
+                    <span class="bg-[#dcfce7] text-[#166534] px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">Integrity</span>
+                    <span class="bg-[#dcfce7] text-[#166534] px-4 py-1.5 rounded-full text-xs font-bold tracking-wide">Results</span>
+                </div>
+                
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm border-l-4 border-l-primary">
+                    <p class="font-bold text-gray-900 italic mb-2">"Transforming careers, one resume at a time."</p>
+                    <div class="flex items-center text-xs font-bold text-gray-400 uppercase tracking-widest">
+                        <svg class="w-4 h-4 text-primary mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Free Live Mock Interview
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Quote Card -->
+            <div class="w-full md:w-[47%] animate-on-scroll" style="animation-delay: 0.2s;">
+                <div class="bg-white p-10 rounded-[2rem] border border-gray-100 shadow-md relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-2 h-full bg-[#00b852]"></div>
+                    <svg class="absolute top-6 right-6 w-24 h-24 text-gray-50 opacity-50 transform rotate-12 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                    
+                    <p class="text-gray-600 italic mb-8 relative z-10 leading-relaxed text-lg">
+                        "Our founder, Rajesh Kumar, spent over 15 years in corporate recruitment and witnessed firsthand how excellent candidates were filtered out before human eyes ever saw their applications. This inspired him to create a service that would level the playing field."
+                    </p>
+                    <div class="flex items-center relative z-10">
+                        <div class="w-12 h-12 rounded-full bg-[#e6f8ec] text-[#00b852] font-bold flex items-center justify-center mr-4">RK</div>
+                        <div>
+                            <div class="font-bold text-gray-900">Rajesh Kumar</div>
+                            <div class="text-xs text-gray-500 uppercase tracking-widest font-mono mt-1">Founder</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Why Choose EdgeCareer</h2>
+                <p class="text-gray-500">What sets us apart from other career service providers</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Expert Writers</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Our team consists of certified resume writers with 10+ years of industry experience.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">ATS Specialists</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">We know exactly what ATS systems look for and optimize your resume accordingly.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Fast Turnaround</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Get your professionally crafted resume in as little as 24 hours.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Personalized Approach</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Every resume is custom-crafted to highlight your unique strengths and experience.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Proven Results</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">85% job placement rate and 500+ success stories across various industries.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-[#f9fafb] p-8 rounded-[2rem] border border-gray-100 hover:shadow-lg transition-shadow animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="w-10 h-10 rounded-full bg-[#dcfce7] text-[#00b852] flex items-center justify-center mb-6">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-3">Affordable Pricing</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Premium quality services at competitive prices with money-back guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-24 px-4 bg-[#f9fafb]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight">Meet Our Expert Team</h2>
+                <p class="text-gray-500">Dedicated professionals committed to your career success</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Team Member 1 -->
+                <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group animate-on-scroll">
+                    <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Rajesh Kumar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Rajesh Kumar</h3>
+                    <p class="text-[#00b852] text-xs font-bold uppercase tracking-widest mb-4">Founder & Lead Resume Writer</p>
+                    <ul class="text-left space-y-2 text-xs text-gray-500">
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 15+ years exp</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Google, Microsoft, Amazon</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> CPRW Certified</li>
+                    </ul>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group animate-on-scroll" style="animation-delay: 0.1s;">
+                    <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Priya Sharma" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Priya Sharma</h3>
+                    <p class="text-[#00b852] text-xs font-bold uppercase tracking-widest mb-4">Senior Career Coach</p>
+                    <ul class="text-left space-y-2 text-xs text-gray-500">
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 12+ years exp</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Meta, Apple, Adobe</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Former Corporate Recruiter</li>
+                    </ul>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Amit Patel" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Amit Patel</h3>
+                    <p class="text-[#00b852] text-xs font-bold uppercase tracking-widest mb-4">LinkedIn Optimization Expert</p>
+                    <ul class="text-left space-y-2 text-xs text-gray-500">
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 10+ years exp</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> LinkedIn, Salesforce</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Digital Marketing Specialist</li>
+                    </ul>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="bg-white p-6 rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center group animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="w-24 h-24 mx-auto rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=200&h=200&auto=format&fit=crop&crop=face&q=80" alt="Sneha Reddy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-lg">Sneha Reddy</h3>
+                    <p class="text-[#00b852] text-xs font-bold uppercase tracking-widest mb-4">ATS Technology Specialist</p>
+                    <ul class="text-left space-y-2 text-xs text-gray-500">
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> 8+ years exp</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Oracle, SAP, Workday</li>
+                        <li class="flex items-center"><svg class="w-3 h-3 mr-2 text-gray-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> Former ATS Admin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Achievements Section -->
+    <section class="py-24 px-4 bg-[#00b852]">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight animate-on-scroll">Our Achievements</h2>
+            <p class="text-green-50 text-lg mb-16 font-medium animate-on-scroll" style="animation-delay: 0.1s;">
+                Numbers that reflect our commitment to excellence
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
+                
+                <!-- Stat 1 -->
+                <div class="animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="text-5xl md:text-6xl font-black text-[#ffce00] mb-3">500+</div>
+                    <div class="text-white font-bold text-sm md:text-base tracking-wide">Resumes Written</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="animate-on-scroll" style="animation-delay: 0.3s;">
+                    <div class="text-5xl md:text-6xl font-black text-[#ffce00] mb-3">85%</div>
+                    <div class="text-white font-bold text-sm md:text-base tracking-wide">Job Placement Rate</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="animate-on-scroll" style="animation-delay: 0.4s;">
+                    <div class="text-5xl md:text-6xl font-black text-[#ffce00] mb-3">4.9/5</div>
+                    <div class="text-white font-bold text-sm md:text-base tracking-wide">Average Rating</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="animate-on-scroll" style="animation-delay: 0.5s;">
+                    <div class="text-5xl md:text-6xl font-black text-[#ffce00] mb-3">48hrs</div>
+                    <div class="text-white font-bold text-sm md:text-base tracking-wide">Average Turnaround</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 py-16 px-4">
+        <div class="w-full mx-auto px-6 lg:px-12 xl:px-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <!-- Logo & Copyright -->
+            <div class="mb-10 md:mb-0 max-w-xs">
+                <a href="index.html" class="flex items-center space-x-2 mb-4 cursor-pointer transition-transform hover:scale-105">
+                    <img src="assets/edgecareer-logo.webp" alt="EdgeCareer Logo" class="h-10 md:h-12 w-auto object-contain" style="clip-path: inset(3px);">
+                </a>
+                <p class="text-sm text-gray-600 mb-6 leading-relaxed max-w-xs">
+                    Transforming careers, one professional at a time. Expert coaching, proven strategies, guaranteed results.
+                </p>
+                <div class="flex space-x-5 mb-6">
+                    <a href="https://www.instagram.com/edge.career.in?igsi=OGh5b2dkazR2Zml6" target="_blank" class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="Instagram">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/edgecareer/" target="_blank" class="text-gray-400 hover:text-[#00b852] transition-colors" aria-label="LinkedIn">
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 font-mono">
+                    &copy; 2024 EdgeCareer. All rights reserved.
+                </p>
+            </div>
+            
+            <!-- Navigation Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="index.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Home</a>
+                <a href="career-paths.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Career Paths</a>
+                <a href="about.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">About</a>
+                <a href="testimonials.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Testimonials</a>
+                <a href="faq.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">FAQ</a>
+                <a href="contact.html" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Contact</a>
+            </div>
+            
+            <!-- Legal Links -->
+            <div class="flex flex-col space-y-4 mb-10 md:mb-0">
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Privacy Policy</a>
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Terms of Service</a>
+                <a href="#" class="text-xs font-bold text-gray-600 uppercase tracking-widest hover:text-[#00b852] transition-colors">Cookie Policy</a>
+            </div>
+            
+            <!-- Newsletter -->
+            <div>
+                <div class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">Subscribe To Our Newsletter</div>
+                <form class="flex" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
+                    <button type="submit" class="gradient-btn text-white text-sm font-bold px-6 py-3 rounded-r-lg hover:shadow-md transition-shadow">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+            
+        </div>
+    </footer>
+
+
+
+    <!-- Intersection Observer for Scroll Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
