@@ -219,7 +219,7 @@
                         <span class="mr-2 opacity-80">📝</span>
                         <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
                     </div>
-                    <button onclick="openRazorpay(799, 'Basic Resume Plan')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
+                    <button onclick="openRazorpay('basic-resume')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
                 </div>
 
                 <!-- Card 2: Pro Resume Plan -->
@@ -253,7 +253,7 @@
                         <span class="mr-2 opacity-80">📝</span>
                         <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
                     </div>
-                    <button onclick="openRazorpay(999, 'Pro Resume Plan')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
+                    <button onclick="openRazorpay('pro-resume')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
                 </div>
 
                 <!-- Card 3: Ultimate Career Plan -->
@@ -298,7 +298,7 @@
                         <span class="mr-2 opacity-80">📝</span>
                         <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
                     </div>
-                    <button onclick="openRazorpay(1499, 'Ultimate Career Plan')" class="w-full bg-[#00b852] text-white hover:bg-[#009c45] transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
+                    <button onclick="openRazorpay('ultimate-career')" class="w-full bg-[#00b852] text-white hover:bg-[#009c45] transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
                 </div>
 
                 <!-- Card 4: LinkedIn Optimization -->
@@ -332,7 +332,7 @@
                         <span class="mr-2 opacity-80">📝</span>
                         <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
                     </div>
-                    <button onclick="openRazorpay(999, 'LinkedIn Optimization')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
+                    <button onclick="openRazorpay('linkedin-optimization')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Book Now</button>
                 </div>
             </div>
         </div>
@@ -847,8 +847,9 @@
             <!-- Newsletter -->
             <div>
                 <div class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">Subscribe To Our Newsletter</div>
-                <form class="flex" onsubmit="event.preventDefault();">
-                    <input type="email" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
+                <form class="flex" onsubmit="event.preventDefault();" data-newsletter novalidate>
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+                    <input type="email" name="email" required autocomplete="email" aria-label="Email address" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
                     <button type="submit" class="gradient-btn text-white text-sm font-bold px-6 py-3 rounded-r-lg hover:shadow-md transition-shadow">
                         Subscribe
                     </button>
@@ -886,108 +887,9 @@
 
         });
     </script>
-    <!-- Razorpay Checkout Script -->
+    <!-- Razorpay Checkout + EdgeCareer payments (prices are set on the server, see assets/js/payments.js) -->
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        async function openRazorpay(amount, planName) {
-            try {
-                const API_URL = "https://asia-south1-jobform-automator-website.cloudfunctions.net/razorpayApi";
-
-                // Step 1: Create Razorpay order on backend
-                const response = await fetch(`${API_URL}/create-order`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ amount: amount, productName: planName })
-                });
-                
-                const order = await response.json();
-                
-                if (!response.ok || order.error) {
-                    throw new Error(order.error || "Failed to create payment order.");
-                }
-
-                function showModal(isSuccess, title, message) {
-                    const id = 'payment-modal-' + Math.random().toString(36).substr(2, 9);
-                    const color = isSuccess ? 'green' : 'red';
-                    const icon = isSuccess 
-                        ? `<svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`
-                        : `<svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>`;
-                    
-                    const modalHtml = `
-                        <div id="${id}" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 transition-opacity duration-300">
-                            <div class="bg-white rounded-3xl p-8 max-w-sm w-full mx-4 shadow-2xl transform scale-95 transition-transform duration-300">
-                                <div class="w-16 h-16 bg-${color}-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    ${icon}
-                                </div>
-                                <h3 class="text-2xl font-bold text-center text-gray-900 mb-2">${title}</h3>
-                                <p class="text-center text-gray-500 mb-8">${message}</p>
-                                <button onclick="document.getElementById('${id}').remove()" class="w-full bg-${isSuccess ? '[#00b852]' : color + '-500'} text-white font-bold py-3 px-4 rounded-xl hover:opacity-90 transition-opacity shadow-lg">
-                                    ${isSuccess ? 'Awesome!' : 'Close'}
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    document.body.insertAdjacentHTML('beforeend', modalHtml);
-                    setTimeout(() => {
-                        const modal = document.getElementById(id);
-                        if (modal) {
-                            modal.classList.remove('opacity-0');
-                            modal.children[0].classList.remove('scale-95');
-                        }
-                    }, 10);
-                }
-
-                // Step 2: Open Razorpay Checkout Modal
-                var options = {
-                    "key": order.keyId,
-                    "amount": order.amount,
-                    "currency": order.currency,
-                    "name": "EdgeCareer",
-                    "description": order.productName,
-                    "order_id": order.orderId,
-                    "handler": async function (paymentResponse) {
-                        try {
-                            // Step 3: Verify signature on backend
-                            const verifyResponse = await fetch(`${API_URL}/verify-payment`, {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(paymentResponse)
-                            });
-
-                            const result = await verifyResponse.json();
-
-                            if (verifyResponse.ok && result.verified) {
-                                showModal(true, "Payment Successful!", "Your " + planName + " is confirmed. We will reach out to you shortly.");
-                            } else {
-                                showModal(false, "Verification Failed", result.error || "Invalid Signature");
-                            }
-                        } catch (err) {
-                            showModal(false, "Verification Error", err.message);
-                        }
-                    },
-                    "theme": {
-                        "color": "#00b852"
-                    },
-                    "modal": {
-                        "ondismiss": function() {
-                            console.log("Payment modal closed by user.");
-                        }
-                    }
-                };
-                
-                var rzp = new Razorpay(options);
-                
-                rzp.on('payment.failed', function (response){
-                    showModal(false, "Payment Failed", response.error.description);
-                });
-                
-                rzp.open();
-            } catch (error) {
-                console.error("Payment error:", error);
-                alert("Payment error: " + error.message);
-            }
-        }
-    </script>
+    <script src="assets/js/payments.js"></script>
     <!-- Typewriter Script -->
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <script>
@@ -1003,6 +905,9 @@
             }
         });
     </script>
+    <!-- EdgeCareer API: endpoint config + newsletter forms -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/newsletter.js"></script>
 </body>
 
 
