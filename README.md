@@ -20,6 +20,26 @@ The website consists of 5 main pages, all interlinked with a unified header and 
 - \`testimonials.html\` - Success stories from past professionals.
 - \`contact.html\` - Contact information and links to official social media (LinkedIn, Instagram).
 - \`assets/\` - Directory containing all images, icons, and logos.
+- \`assets/js/\` - Payments and newsletter scripts (see below).
+
+## 💳 Payments & Newsletter
+"Book Now" buttons and the footer newsletter forms talk to the **edgecareerApi** backend (separate repo: \`edgecareer-api\`).
+
+- \`assets/js/config.js\` - Where the API lives (production Cloud Function, or \`http://localhost:8080\` when the site is opened from localhost).
+- \`assets/js/payments.js\` - \`openRazorpay('plan-id')\`: collects name/email/phone, asks the server to create the Razorpay order, opens Razorpay Checkout, and has the server verify the payment.
+- \`assets/js/newsletter.js\` - Saves emails from every \`<form data-newsletter>\`.
+
+**Prices are decided by the server, not by this website.** The buttons only send a plan ID (for example \`openRazorpay('pro-upgrade')\`). To change a price, update both the price shown in the HTML and \`src/plans.js\` in the backend.
+
+| Plan ID | Plan | Price |
+|---|---|---|
+| \`basic-resume\` | Basic Resume Plan | ₹799 |
+| \`pro-resume\` | Pro Resume Plan | ₹999 |
+| \`ultimate-career\` | Ultimate Career Plan | ₹1,499 |
+| \`linkedin-optimization\` | LinkedIn Optimization | ₹999 |
+| \`launch\` | LAUNCH | ₹5,999 |
+| \`pro-upgrade\` | Pro Upgrade | ₹11,999 |
+| \`ultimate-upgrade\` | Ultimate Upgrade | ₹18,999 |
 
 ## 💻 How to Run Locally
 Because this is a pure static website, it requires zero setup or build processes to view.
@@ -40,7 +60,7 @@ To deploy:
 3. No build commands (like \`npm run build\`) are required. Simply set the root directory as the deployment target.
 
 ## 🔒 Security Note
-This frontend codebase contains only public-facing information and standard HTML/CSS. It does not contain any secret API keys or backend credentials, making it 100% safe to deploy to public hosting environments.
+This frontend codebase contains only public-facing information and standard HTML/CSS/JS. It does not contain any secret API keys or backend credentials, making it safe to deploy to public hosting environments. Never add Razorpay key secrets or any \`.env\` file here: GitHub Pages publishes every file in this repository.
 
 ---
 *&copy; 2024 EdgeCareer. All rights reserved.*
