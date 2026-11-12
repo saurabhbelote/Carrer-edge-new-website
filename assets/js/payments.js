@@ -309,6 +309,8 @@
       showResult('error', 'Something went wrong', 'Please refresh the page and try again.');
       return;
     }
+    // Anonymous Book Now counter for the admin dashboard (assets/js/analytics.js). Never blocks booking.
+    try { if (typeof window.edgecareerTrack === 'function') window.edgecareerTrack('book_now', { planId: planId }); } catch (e) { /* ignore */ }
     if (typeof window.Razorpay !== 'function' || !window.EDGECAREER_API) {
       showResult('error', 'Payment unavailable', 'The payment window could not load. Please check your connection and refresh the page.');
       return;

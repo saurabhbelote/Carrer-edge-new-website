@@ -28,6 +28,10 @@ The website consists of 5 main pages, all interlinked with a unified header and 
 - \`assets/js/config.js\` - Where the API lives (production Cloud Function, or \`http://localhost:8080\` when the site is opened from localhost).
 - \`assets/js/payments.js\` - \`openRazorpay('plan-id')\`: collects name/email/phone, asks the server to create the Razorpay order, opens Razorpay Checkout, and has the server verify the payment.
 - \`assets/js/newsletter.js\` - Saves emails from every \`<form data-newsletter>\`.
+- \`assets/js/analytics.js\` - Anonymous page-view and Book Now counters for the private admin dashboard.
+  - No cookies and no personal data: it sends only the page name, the plan ID and "first visit today" (it remembers only the date).
+  - It respects Do Not Track.
+  - It must be loaded after \`config.js\`.
 
 **Prices are decided by the server, not by this website.** The buttons only send a plan ID (for example \`openRazorpay('pro-upgrade')\`). To change a price, update both the price shown in the HTML and \`src/plans.js\` in the backend.
 
