@@ -21,7 +21,15 @@
     'ultimate-upgrade': 'Ultimate Upgrade'
   };
 
+  // Resume plans ("Buy Now") get an optional resume upload in the details form. Career-path plans don't.
+  var RESUME_PLANS = { 'basic-resume': true, 'pro-resume': true, 'ultimate-career': true, 'linkedin-optimization': true };
+  var RESUME_MAX_BYTES = 5 * 1024 * 1024; // same limit as the server
+  var RESUME_TYPES = { pdf: 'PDF', doc: 'DOC', docx: 'DOCX', odt: 'ODT', rtf: 'RTF', txt: 'TXT' };
+  var RESUME_ACCEPT = '.pdf,.doc,.docx,.odt,.rtf,.txt,application/pdf,application/msword,' +
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.oasis.opendocument.text,application/rtf,text/plain';
+
   var busy = false;
+  var lastResume = null; // the resume chosen on this page visit, so a retry doesn't mean choosing it again
   var lastDetails = null; // remembered for this page visit only, so a retry doesn't mean retyping
   var openModal = null;
 
@@ -53,6 +61,157 @@
         return { ok: res.ok, status: res.status, data: data };
       });
     });
+  }
+
+  // ---------- optional resume (resume plans only) ----------
+
+  function resumeExtension(name) {
+    var m = /\.([A-Za-z0-9]{1,10})$/.exec(name || '');
+    return m ? m[1].toLowerCase() : '';
+  }
+
+  function resumeSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1048576) return Math.round(bytes / 1024) + ' KB';
+    return (Math.round((bytes / 1048576) * 10) / 10) + ' MB';
+  }
+
+  function checkResume(file) {
+    if (!RESUME_TYPES[resumeExtension(file.name)]) return 'Please upload your resume as a PDF, DOC, DOCX, ODT, RTF or TXT file.';
+    if (!file.size) return 'This file is empty. Please choose your resume file again.';
+    if (file.size > RESUME_MAX_BYTES) return 'This file is larger than 5 MB. Please upload a smaller file.';
+    return '';
+  }
+
+  /** Adds the resume to the order just created. The checkout key proves this browser created the order. */
+  function uploadResume(orderId, idempotencyKey, file, onProgress) {
+    return new Promise(function (resolve, reject) {
+      var data = new FormData();
+      data.append('orderId', orderId);
+      data.append('idempotencyKey', idempotencyKey);
+      data.append('resume', file, file.name);
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', window.EDGECAREER_API + '/order-resume');
+      xhr.timeout = 120000;
+      xhr.upload.onprogress = function (e) {
+        if (e.lengthComputable) onProgress(Math.min(100, Math.round((e.loaded / e.total) * 100)));
+      };
+      xhr.onload = function () {
+        var res = {};
+        try { res = JSON.parse(xhr.responseText || '{}'); } catch (e) { res = {}; }
+        if (xhr.status === 200 && res.attached) { resolve(res); return; }
+        var err = new Error(res.error || 'Could not upload your resume. Please try again.');
+        err.fields = res.fields || {};
+        reject(err);
+      };
+      xhr.onerror = function () { reject(new Error('Could not upload your resume. Please check your connection and try again, or remove the file to continue without it.')); };
+      xhr.ontimeout = function () { reject(new Error('The resume upload took too long. Please try again, or remove the file to continue without it.')); };
+      xhr.send(data);
+    });
+  }
+
+  /** "Upload resume (optional)": choose, replace or remove one file. Same look as the other fields. */
+  function resumeField(initialFile) {
+    var state = { file: null };
+    var wrap = el('div', 'block text-left');
+    wrap.appendChild(el('span', 'block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1', 'Upload resume (optional)'));
+
+    var input = el('input', 'sr-only');
+    input.type = 'file';
+    input.name = 'resume';
+    input.accept = RESUME_ACCEPT;
+    input.id = 'ec-buy-resume';
+
+    var picker = el('label', 'flex items-center gap-3 w-full bg-gray-100 text-gray-600 text-sm px-4 py-3 rounded-xl cursor-pointer hover:bg-gray-200 transition-colors focus-within:ring-2 focus-within:ring-primary');
+    picker.htmlFor = input.id;
+    var ns = 'http://www.w3.org/2000/svg';
+    var svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('class', 'w-5 h-5 text-[#00b852] shrink-0');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    var path = document.createElementNS(ns, 'path');
+    path.setAttribute('stroke-linecap', 'round');
+    path.setAttribute('stroke-linejoin', 'round');
+    path.setAttribute('stroke-width', '2');
+    path.setAttribute('d', 'M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0-12l-4 4m4-4l4 4');
+    svg.appendChild(path);
+    picker.appendChild(svg);
+    picker.appendChild(el('span', 'flex-1 font-semibold', 'Choose a file'));
+    picker.appendChild(el('span', 'text-[11px] text-gray-400 text-right', 'PDF, DOC, DOCX, ODT, RTF, TXT · max 5 MB'));
+    picker.appendChild(input);
+
+    var chosen = el('div', 'hidden items-center gap-3 w-full bg-gray-100 px-4 py-3 rounded-xl');
+    var badge = el('span', 'shrink-0 bg-white text-[#00b852] text-[10px] font-extrabold px-2 py-1 rounded-md');
+    var info = el('div', 'min-w-0 flex-1');
+    var fileName = el('p', 'text-sm font-semibold text-gray-800 truncate');
+    var fileMeta = el('p', 'text-xs text-gray-500');
+    info.appendChild(fileName);
+    info.appendChild(fileMeta);
+    var replace = el('button', 'shrink-0 text-xs font-semibold text-[#00b852] hover:underline px-1 py-1 disabled:opacity-50', 'Replace');
+    replace.type = 'button';
+    var remove = el('button', 'shrink-0 text-xs font-semibold text-gray-500 hover:text-red-500 px-1 py-1 disabled:opacity-50', 'Remove');
+    remove.type = 'button';
+    chosen.appendChild(badge);
+    chosen.appendChild(info);
+    chosen.appendChild(replace);
+    chosen.appendChild(remove);
+
+    var error = el('span', 'hidden text-xs text-red-500 mt-1');
+    error.setAttribute('role', 'alert');
+    wrap.appendChild(picker);
+    wrap.appendChild(chosen);
+    wrap.appendChild(error);
+
+    function setError(message) {
+      error.textContent = message || '';
+      error.classList.toggle('hidden', !message);
+    }
+    function show() {
+      picker.classList.toggle('hidden', !!state.file);
+      chosen.classList.toggle('hidden', !state.file);
+      chosen.classList.toggle('flex', !!state.file);
+      if (state.file) {
+        badge.textContent = RESUME_TYPES[resumeExtension(state.file.name)] || 'FILE';
+        fileName.textContent = state.file.name;
+        fileName.title = state.file.name;
+        fileMeta.textContent = resumeSize(state.file.size);
+      }
+    }
+    function choose(file) {
+      if (!file) return;
+      var problem = checkResume(file);
+      setError(problem);
+      if (problem) return; // keep the previous valid file, if any
+      state.file = file;
+      show();
+    }
+    input.addEventListener('change', function () {
+      choose(input.files && input.files[0]);
+      input.value = ''; // lets the same file be chosen again after "Remove"
+    });
+    replace.addEventListener('click', function () { input.click(); });
+    remove.addEventListener('click', function () {
+      state.file = null;
+      setError('');
+      show();
+      input.focus();
+    });
+    if (initialFile && !checkResume(initialFile)) state.file = initialFile;
+    show();
+
+    state.wrap = wrap;
+    state.setError = setError;
+    state.hasError = function () { return !error.classList.contains('hidden'); };
+    state.focus = function () { (state.file ? replace : input).focus(); };
+    state.setDisabled = function (disabled) {
+      input.disabled = disabled;
+      replace.disabled = disabled;
+      remove.disabled = disabled;
+      picker.classList.toggle('pointer-events-none', disabled);
+    };
+    return state;
   }
 
   function closeModal() {
@@ -158,6 +317,7 @@
 
   function openDetailsForm(planId) {
     var idempotencyKey = uuid(); // one key per form: double clicks and retries reuse the same order
+    var created = null; // { order, values } once /create-order succeeded (kept if the resume upload then fails)
     var d = lastDetails || {};
     var card = el('div');
     card.appendChild(el('h3', 'text-2xl font-bold text-center text-gray-900 mb-2', 'Book ' + PLAN_NAMES[planId]));
@@ -169,6 +329,8 @@
     var email = field('Email', 'email', 'email', 'email', d.email, 'email');
     var phone = field('Mobile number', 'phone', 'tel', 'tel', d.phone, 'tel');
     [name, email, phone].forEach(function (f) { form.appendChild(f.wrap); });
+    var resume = RESUME_PLANS[planId] ? resumeField(lastResume) : null;
+    if (resume) form.appendChild(resume.wrap);
     var formError = el('p', 'hidden text-sm text-red-500 text-center');
     form.appendChild(formError);
 
@@ -196,13 +358,35 @@
       setError(name, values.name.length < 2 ? 'Please enter your full name.' : '');
       setError(email, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(values.email) ? '' : 'Please enter a valid email address.');
       setError(phone, values.phone.replace(/\D/g, '').length >= 10 ? '' : 'Please enter a valid mobile number.');
+      if (resume) resume.setError(resume.file ? checkResume(resume.file) : ''); // optional: no file is fine
       formError.classList.add('hidden');
       var firstBad = [name, email, phone].filter(function (f) { return !f.error.classList.contains('hidden'); })[0];
       if (firstBad) { firstBad.input.focus(); return; }
+      if (resume && resume.hasError()) { resume.focus(); return; }
+      if (submit.disabled) return;
+
+      function ready() {
+        if (resume) resume.setDisabled(false);
+        submit.disabled = false;
+        submit.textContent = 'Continue to payment';
+      }
+      function goToCheckout(order) {
+        lastDetails = values;
+        if (resume) lastResume = resume.file;
+        closeModal();
+        startCheckout(order);
+      }
 
       submit.disabled = true;
       submit.textContent = 'Please wait…';
-      post('/create-order', { planId: planId, customer: values, idempotencyKey: idempotencyKey })
+      if (resume) resume.setDisabled(true);
+      // The order already exists if only the resume upload failed before: reuse it, unless the details were changed.
+      var sameDetails = created && created.values.name === values.name && created.values.email === values.email && created.values.phone === values.phone;
+      if (created && !sameDetails) idempotencyKey = uuid();
+      var orderStep = sameDetails
+        ? Promise.resolve({ ok: true, data: created.order })
+        : post('/create-order', { planId: planId, customer: values, idempotencyKey: idempotencyKey });
+      orderStep
         .then(function (r) {
           if (!r.ok) {
             var fields = (r.data && r.data.fields) || {};
@@ -211,19 +395,30 @@
             setError(phone, fields.phone);
             formError.textContent = (r.data && r.data.error) || 'Could not start the payment. Please try again.';
             formError.classList.remove('hidden');
-            submit.disabled = false;
-            submit.textContent = 'Continue to payment';
+            ready();
             return;
           }
-          lastDetails = values;
-          closeModal();
-          startCheckout(r.data);
+          created = { order: r.data, values: values };
+          var file = resume && resume.file;
+          if (!file) { goToCheckout(r.data); return; } // no resume: exactly the previous flow
+          submit.textContent = 'Uploading resume…';
+          return uploadResume(r.data.orderId, idempotencyKey, file, function (pct) {
+            submit.textContent = pct < 100 ? 'Uploading resume… ' + pct + '%' : 'Saving resume…';
+          }).then(function () {
+            goToCheckout(r.data);
+          }, function (err) {
+            if (err.fields && err.fields.resume) resume.setError(err.fields.resume);
+            formError.textContent = err.fields && err.fields.resume
+              ? 'Please choose another file, or remove it to continue without a resume.'
+              : err.message;
+            formError.classList.remove('hidden');
+            ready();
+          });
         })
         .catch(function () {
           formError.textContent = 'Could not connect. Please check your internet connection and try again.';
           formError.classList.remove('hidden');
-          submit.disabled = false;
-          submit.textContent = 'Continue to payment';
+          ready();
         });
     });
 
