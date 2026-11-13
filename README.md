@@ -27,6 +27,9 @@ The website consists of 5 main pages, all interlinked with a unified header and 
 
 - \`assets/js/config.js\` - Where the API lives (production Cloud Function, or \`http://localhost:8080\` when the site is opened from localhost).
 - \`assets/js/payments.js\` - \`openRazorpay('plan-id')\`: collects name/email/phone, asks the server to create the Razorpay order, opens Razorpay Checkout, and has the server verify the payment.
+  - On the resume plans ("Buy Now") the form also has an optional resume upload (PDF, DOC, DOCX, ODT, RTF or TXT, max 5 MB).
+  - If a file is chosen, it is uploaded for the new order before Checkout opens. Checkout and verification are unchanged.
+  - Career-path plans ("Book Now") have no resume field.
 - \`assets/js/newsletter.js\` - Saves emails from every \`<form data-newsletter>\`.
 - \`assets/js/expert-request.js\` - \`openExpertRequest('plan-id')\`: the "Connect with an Expert" form on the resume plan cards.
   - It collects name, email, phone and one resume file (PDF, DOC, DOCX, ODT, RTF or TXT, max 5 MB) and uploads them to the server.
