@@ -42,12 +42,14 @@ The website consists of 5 main pages, all interlinked with a unified header and 
 
 **Prices are decided by the server, not by this website.** The buttons only send a plan ID (for example \`openRazorpay('pro-upgrade')\`). To change a price, update both the price shown in the HTML and \`src/plans.js\` in the backend.
 
+The four resume plans ("Premium Resume & Career Upgrade Plans", with the "Compare Our Plans" table) use the same markup on \`index.html\` and \`career-paths.html\`: change both. Each card carries \`data-plan-id\` and \`data-price\`; a backend unit test fails if a shown price differs from \`src/plans.js\`.
+
 | Plan ID | Plan | Price |
 |---|---|---|
-| \`basic-resume\` | Basic Resume Plan | ₹799 |
-| \`pro-resume\` | Pro Resume Plan | ₹999 |
-| \`ultimate-career\` | Ultimate Career Plan | ₹1,499 |
-| \`linkedin-optimization\` | LinkedIn Optimization | ₹999 |
+| \`basic-resume\` | Basic Resume Plan | ₹899 |
+| \`pro-resume\` | Pro Resume Plan | ₹1,299 |
+| \`ultimate-career\` | Ultimate Career Plan | ₹1,999 |
+| \`linkedin-optimization\` | LinkedIn Optimization | ₹1,499 |
 | \`launch\` | LAUNCH | ₹5,999 |
 | \`pro-upgrade\` | Pro Upgrade | ₹11,999 |
 | \`ultimate-upgrade\` | Ultimate Upgrade | ₹18,999 |
