@@ -23,11 +23,15 @@ The website consists of 5 main pages, all interlinked with a unified header and 
 - \`assets/js/\` - Payments and newsletter scripts (see below).
 
 ## 💳 Payments & Newsletter
-"Book Now" buttons and the footer newsletter forms talk to the **edgecareerApi** backend (separate repo: \`edgecareer-api\`).
+"Buy Now" / "Book Now" buttons, "Connect with an Expert" buttons and the footer newsletter forms talk to the **edgecareerApi** backend (separate repo: \`edgecareer-api\`).
 
 - \`assets/js/config.js\` - Where the API lives (production Cloud Function, or \`http://localhost:8080\` when the site is opened from localhost).
 - \`assets/js/payments.js\` - \`openRazorpay('plan-id')\`: collects name/email/phone, asks the server to create the Razorpay order, opens Razorpay Checkout, and has the server verify the payment.
 - \`assets/js/newsletter.js\` - Saves emails from every \`<form data-newsletter>\`.
+- \`assets/js/expert-request.js\` - \`openExpertRequest('plan-id')\`: the "Connect with an Expert" form on the resume plan cards.
+  - It collects name, email, phone and one resume file (PDF, DOC, DOCX, ODT, RTF or TXT, max 5 MB) and uploads them to the server.
+  - The server checks everything again, stores the resume privately, and the request appears in the admin dashboard's Expert Requests tab.
+  - It is independent of \`payments.js\`; no payment is involved.
 - \`assets/js/analytics.js\` - Anonymous page-view and Book Now counters for the private admin dashboard.
   - No cookies and no personal data: it sends only the page name, the plan ID and "first visit today" (it remembers only the date).
   - It respects Do Not Track.
