@@ -94,7 +94,7 @@
                 <!-- Desktop Menu -->
                 <div class="hidden lg:flex items-center space-x-8">
                     <a href="index.html" class="text-[#00b852] bg-[#ecfdf5] px-4 py-2 rounded-full font-bold text-sm tracking-wider">Home</a>
-                    <a href="career-paths.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Career Paths</a>
+                    <a href="career-paths.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Product &amp; Pricing</a>
                     <a href="about.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">About</a>
                     <a href="testimonials.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Testimonials</a>
                     <a href="contact.html" class="text-gray-500 hover:text-[#00b852] hover:bg-[#ecfdf5] px-4 py-2 rounded-full transition-all font-medium text-sm tracking-wider transition">Contact</a>
@@ -121,7 +121,7 @@
         <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 shadow-2xl absolute w-full left-0 top-20 transition-all z-40">
             <div class="px-6 py-6 flex flex-col space-y-6">
                 <a href="index.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Home</a>
-                <a href="career-paths.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Career Paths</a>
+                <a href="career-paths.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Product &amp; Pricing</a>
                 <a href="about.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">About</a>
                 <a href="testimonials.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Testimonials</a>
                 <a href="contact.html" class="text-gray-800 font-bold hover:text-[#00b852] transition-colors">Contact</a>
@@ -178,166 +178,331 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section class="py-24 px-4 bg-white">
-        <div class="max-w-[1400px] mx-auto w-full">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">Premium Resume Solutions</h2>
-                <p class="text-lg text-gray-600">Craft Your Winning Resume Today &mdash; Select a Plan to Get Started</p>
+    <!-- Pricing Section: Premium Resume & Career Upgrade Plans.
+         Same markup on index.html and career-paths.html. Plan IDs and prices must match edgecareer-api/src/plans.js
+         (the server decides what is charged; a backend unit test compares the prices shown here with plans.js). -->
+    <section id="resume-plans" class="py-24 px-4 bg-white">
+        <div class="mx-auto w-full max-w-[1200px]">
+            <div class="mb-12 text-center animate-on-scroll">
+                <span class="mb-4 inline-block rounded-full bg-[#ecfdf5] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#00b852]">Resume &amp; LinkedIn Services</span>
+                <h2 class="mb-4 text-3xl font-bold tracking-tight text-gray-900 md:text-5xl">Premium Resume &amp; Career Upgrade Plans</h2>
+                <p class="text-base text-gray-600 md:text-lg">Craft Your Winning Resume Today &mdash; Select a Plan to Get Started</p>
             </div>
-            <!-- Pricing Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch w-full">
-                
-                <!-- Card 1: Basic Resume Plan -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll h-full flex flex-col">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-bold text-gray-900">Basic Resume Plan</h3>
-                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded">SAVE 33%</span>
+            <!-- Plans: the featured Ultimate Career Plan, then Basic, Pro and LinkedIn Optimization.
+                 Large screens: one row of three, every section aligned across the cards (CSS subgrid).
+                 Tablets: two columns, LinkedIn full width. Phones: one column. -->
+            <div class="space-y-8">
+                <!-- Featured: Ultimate Career Plan (most recommended). Its five feature groups are shown as tiles. -->
+                <article id="plan-ultimate-career" data-plan-id="ultimate-career" aria-labelledby="plan-ultimate-career-name" class="relative overflow-hidden rounded-3xl border-2 border-[#00b852] bg-white shadow-xl shadow-green-900/10 ring-4 ring-[#00b852]/10 animate-on-scroll xl:grid xl:grid-cols-[minmax(0,4fr)_minmax(0,7fr)]">
+                    <div class="flex flex-col border-b border-[#00b852]/15 bg-[#f3fcf7] p-5 sm:p-7 xl:border-b-0 xl:border-r xl:p-8">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-[#00b852] px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-white"><svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>Most Recommended</span>
+                            <span class="rounded-full bg-amber-100 px-3 py-1 text-[11px] font-extrabold uppercase tracking-widest text-amber-800">Elite Choice</span>
+                        </div>
+                        <div class="mt-4 flex flex-1 flex-col md:grid md:grid-cols-2 md:gap-x-8 xl:flex xl:flex-col">
+                            <div>
+                                <h3 id="plan-ultimate-career-name" class="text-2xl font-bold tracking-tight text-gray-900">Ultimate Career Plan</h3>
+                                <p class="mt-1 text-sm font-semibold text-[#00b852]">Everything you need for your next career move.</p>
+                                <div class="mt-5">
+                                    <div data-price-panel class="rounded-2xl border border-[#00b852]/20 bg-white px-4 py-3.5">
+                                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                                            <span class="text-[2rem] font-black leading-none tracking-tight text-gray-900"><span class="sr-only">Price: </span><span data-price="1999">₹1,999</span></span>
+                                            <s class="text-base font-medium text-gray-400"><span class="sr-only">Regular price: </span><span data-original-price="4999">₹4,999</span></s>
+                                        </div>
+                                        <div class="mt-2.5 flex items-center justify-between gap-3">
+                                            <p class="text-sm font-semibold text-[#00b852]">You save ₹3,000</p>
+                                            <span class="shrink-0 rounded-full bg-[#00b852] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">60% off</span>
+                                        </div>
+                                        <div class="mt-3 flex items-center gap-2 border-t border-[#00b852]/15 pt-3 text-[13px] text-gray-600">
+                                            <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span data-delivery><span class="font-semibold text-gray-900">Within 12 Hours</span> &middot; Priority Delivery</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-5 space-y-3 md:mt-0 md:self-end xl:mt-auto xl:self-stretch xl:pt-6">
+                                <p class="flex items-start gap-2.5 rounded-2xl bg-white border border-[#00b852]/15 px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-600"><svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span><span class="font-semibold text-gray-900">Ideal for</span> experienced professionals and serious job switchers seeking complete career preparation.</span></p>
+                                <div>
+                                    <button onclick="openRazorpay('ultimate-career')" class="w-full bg-[#00b852] text-white shadow-lg shadow-green-600/20 hover:bg-[#009c45] rounded-xl py-3 font-bold transition-colors">Buy Now</button>
+                                    <button type="button" onclick="openExpertRequest('ultimate-career')" class="mt-2.5 w-full rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:border-[#00b852] hover:bg-[#ecfdf5] hover:text-[#00b852]">Connect with an Expert</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-sm text-gray-400 line-through mb-1">₹1,200</div>
-                    <div class="text-3xl font-black text-[#00b852] mb-6">₹799</div>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            1 Premium Resume (ATS Friendly)
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            1 Professional Cover Letter
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Basic Interview Preparation Kit
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            2 Months WhatsApp Support
-                        </li>
-                    </ul>
-                    <div class="mb-6 p-3 bg-green-50 rounded-lg border border-green-100 text-[11px] leading-tight text-green-800 font-medium flex items-start">
-                        <span class="mr-2 opacity-80">📝</span>
-                        <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
+                    <div class="p-5 sm:p-7 xl:p-8">
+                        <p class="mb-4 text-[11px] font-bold uppercase tracking-widest text-gray-400">What's included</p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                        <section class="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 sm:p-5">
+                            <div>
+                                <h4 class="flex items-center gap-3 text-sm font-bold text-gray-900"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ecfdf5] text-[#00b852]"><svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg></span>Professional Resume Development</h4>
+                                <ul class="mt-3 space-y-2 text-sm leading-snug text-gray-700">
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>2 Premium ATS-Friendly Role-Specific Resumes</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>2 Customized Professional Cover Letters</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Advanced Experience &amp; Achievement Optimization</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Job Role-Specific Keyword Alignment</span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 sm:p-5">
+                            <div>
+                                <h4 class="flex items-center gap-3 text-sm font-bold text-gray-900"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ecfdf5] text-[#00b852]"><svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg></span>Advanced LinkedIn Optimization</h4>
+                                <ul class="mt-3 space-y-2 text-sm leading-snug text-gray-700">
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Complete LinkedIn Profile Makeover</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Professional Headline &amp; About Section Enhancement</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Experience &amp; Skills Optimization</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Recruiter-Focused Profile Positioning</span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 sm:p-5">
+                            <div>
+                                <h4 class="flex items-center gap-3 text-sm font-bold text-gray-900"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ecfdf5] text-[#00b852]"><svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg></span>Advanced Interview Preparation</h4>
+                                <ul class="mt-3 space-y-2 text-sm leading-snug text-gray-700">
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>200+ Domain-Specific Advanced Interview Preparation Kit</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Technical / Functional Interview Questions &amp; Answers</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Advanced Interview Preparation Resources</span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="rounded-2xl border border-gray-100 bg-gray-50/70 p-4 sm:p-5">
+                            <div>
+                                <h4 class="flex items-center gap-3 text-sm font-bold text-gray-900"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ecfdf5] text-[#00b852]"><svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg></span>Personalized Career Guidance</h4>
+                                <ul class="mt-3 space-y-2 text-sm leading-snug text-gray-700">
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>60-Minute Career Guidance Session with an Expert</span></li>
+                                </ul>
+                            </div>
+                            <div class="mt-4 border-t border-gray-200/70 pt-4">
+                                <h4 class="flex items-center gap-3 text-sm font-bold text-gray-900"><span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[#ecfdf5] text-[#00b852]"><svg class="h-[18px] w-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg></span>Additional Benefits</h4>
+                                <ul class="mt-3 space-y-2 text-sm leading-snug text-gray-700">
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>3 Resume Revision Rounds</span></li>
+                                    <li class="flex items-start gap-2.5"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>PDF + Editable Word Documents</span></li>
+                                </ul>
+                            </div>
+                        </section>
+                        </div>
                     </div>
-                    <button onclick="openRazorpay('basic-resume')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Buy Now</button>
-                    <button type="button" onclick="openExpertRequest('basic-resume')" class="w-full mt-3 bg-white text-gray-600 border border-gray-200 hover:border-[#00b852] hover:text-[#00b852] hover:bg-[#ecfdf5] transition-colors py-2.5 rounded-xl font-semibold text-sm">Connect with an Expert</button>
-                </div>
+                </article>
 
-                <!-- Card 2: Pro Resume Plan -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll h-full flex flex-col" style="animation-delay: 0.1s;">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-bold text-gray-900">Pro Resume Plan</h3>
-                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded">SAVE 67%</span>
+                <div class="grid grid-cols-1 gap-5 pt-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-0">
+                <!-- Basic Resume Plan -->
+                <article id="plan-basic-resume" data-plan-id="basic-resume" aria-labelledby="plan-basic-resume-name" class="relative flex flex-col rounded-3xl border-2 border-gray-100 shadow-sm bg-white p-5 transition-shadow duration-300 hover:shadow-xl animate-on-scroll sm:p-6 lg:row-span-5 lg:grid lg:gap-y-0 lg:[grid-template-rows:subgrid]">
+                    <header class="pb-4">
+                        <h3 id="plan-basic-resume-name" class="text-xl font-bold tracking-tight text-gray-900">Basic Resume Plan</h3>
+                        <p class="mt-1 text-sm font-semibold text-[#00b852]">Essential Resume Package</p>
+                    </header>
+                    <div data-price-panel class="rounded-2xl border border-gray-100 bg-gray-50 px-4 py-3.5">
+                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <span class="text-[2rem] font-black leading-none tracking-tight text-gray-900"><span class="sr-only">Price: </span><span data-price="899">₹899</span></span>
+                            <s class="text-base font-medium text-gray-400"><span class="sr-only">Regular price: </span><span data-original-price="1799">₹1,799</span></s>
+                        </div>
+                        <div class="mt-2.5 flex items-center justify-between gap-3">
+                            <p class="text-sm font-semibold text-[#00b852]">You save ₹900</p>
+                            <span class="shrink-0 rounded-full bg-[#00b852] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">50% off</span>
+                        </div>
+                        <div class="mt-3 flex items-center gap-2 border-t border-gray-200/80 pt-3 text-[13px] text-gray-600">
+                            <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span data-delivery><span class="font-semibold text-gray-900">Within 24 Hours</span> &middot; Priority Delivery</span>
+                        </div>
                     </div>
-                    <div class="text-sm text-gray-400 line-through mb-1">₹2,999</div>
-                    <div class="text-3xl font-black text-[#00b852] mb-6">₹999</div>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            2 Premium Resumes (ATS Friendly)
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            1 Professional Cover Letter
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Complete Interview Preparation Kit
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            3 Months WhatsApp Support
-                        </li>
-                    </ul>
-                    <div class="mb-6 p-3 bg-green-50 rounded-lg border border-green-100 text-[11px] leading-tight text-green-800 font-medium flex items-start">
-                        <span class="mr-2 opacity-80">📝</span>
-                        <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
+                    <div class="pt-5">
+                        <p class="mb-4 text-sm leading-relaxed text-gray-600">Build a professional first impression.</p>
+                        <p class="mb-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">What's included</p>
+                        <ul class="text-sm leading-snug text-gray-700">
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>1 Professionally Crafted ATS-Friendly Resume</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>1 Customized Professional Cover Letter</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Professional Summary &amp; Experience Optimization</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Relevant Skills &amp; Job Role Keyword Alignment</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>1 Resume Revision</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>PDF + Editable Word Document</span></li>
+                        </ul>
                     </div>
-                    <button onclick="openRazorpay('pro-resume')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Buy Now</button>
-                    <button type="button" onclick="openExpertRequest('pro-resume')" class="w-full mt-3 bg-white text-gray-600 border border-gray-200 hover:border-[#00b852] hover:text-[#00b852] hover:bg-[#ecfdf5] transition-colors py-2.5 rounded-xl font-semibold text-sm">Connect with an Expert</button>
-                </div>
+                    <div class="mt-auto pt-5 lg:mt-0">
+                        <p class="flex items-start gap-2.5 rounded-2xl h-full bg-gray-50 px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-600"><svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span><span class="font-semibold text-gray-900">Ideal for</span> freshers and professionals looking to upgrade their existing resumes.</span></p>
+                    </div>
+                    <div class="pt-3">
+                        <div>
+                            <button onclick="openRazorpay('basic-resume')" class="w-full bg-[#061610] text-white hover:bg-black rounded-xl py-3 font-bold transition-colors">Buy Now</button>
+                            <button type="button" onclick="openExpertRequest('basic-resume')" class="mt-2.5 w-full rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:border-[#00b852] hover:bg-[#ecfdf5] hover:text-[#00b852]">Connect with an Expert</button>
+                        </div>
+                    </div>
+                </article>
 
-                <!-- Card 3: Ultimate Career Plan -->
-                <div class="bg-white rounded-3xl p-8 border-2 border-[#00b852] shadow-xl relative animate-on-scroll h-full flex flex-col" style="animation-delay: 0.2s;">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#00b852] text-white px-4 py-1 rounded text-[10px] font-bold uppercase tracking-widest">
-                        Elite Choice
+                <!-- Pro Resume Plan -->
+                <article id="plan-pro-resume" data-plan-id="pro-resume" aria-labelledby="plan-pro-resume-name" class="relative flex flex-col rounded-3xl border-2 border-amber-300 shadow-md bg-white p-5 transition-shadow duration-300 hover:shadow-xl animate-on-scroll sm:p-6 lg:row-span-5 lg:grid lg:gap-y-0 lg:[grid-template-rows:subgrid]" style="animation-delay: 0.1s;">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-amber-400 px-4 py-1 text-[11px] font-extrabold uppercase tracking-widest text-amber-950 shadow-sm">Best Value</div>
+                    <header class="pb-4">
+                        <h3 id="plan-pro-resume-name" class="text-xl font-bold tracking-tight text-gray-900">Pro Resume Plan</h3>
+                        <p class="mt-1 text-sm font-semibold text-[#00b852]">Get application-ready and interview-ready.</p>
+                    </header>
+                    <div data-price-panel class="rounded-2xl border border-amber-200/70 bg-amber-50/70 px-4 py-3.5">
+                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <span class="text-[2rem] font-black leading-none tracking-tight text-gray-900"><span class="sr-only">Price: </span><span data-price="1299">₹1,299</span></span>
+                            <s class="text-base font-medium text-gray-400"><span class="sr-only">Regular price: </span><span data-original-price="3999">₹3,999</span></s>
+                        </div>
+                        <div class="mt-2.5 flex items-center justify-between gap-3">
+                            <p class="text-sm font-semibold text-[#00b852]">You save ₹2,700</p>
+                            <span class="shrink-0 rounded-full bg-[#00b852] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">67% off</span>
+                        </div>
+                        <div class="mt-3 flex items-center gap-2 border-t border-gray-200/80 pt-3 text-[13px] text-gray-600">
+                            <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span data-delivery><span class="font-semibold text-gray-900">Within 24 Hours</span> &middot; Priority Delivery</span>
+                        </div>
                     </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-bold text-gray-900">Ultimate Career Plan</h3>
-                        <span class="bg-yellow-100 text-yellow-700 text-[10px] font-bold px-2 py-1 rounded">SAVE 63%</span>
+                    <div class="pt-5">
+                        <p class="mb-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">What's included</p>
+                        <ul class="text-sm leading-snug text-gray-700">
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>2 Professionally Crafted ATS-Friendly Resumes</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>2 Customized Professional Cover Letters</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Role-Specific Resume &amp; Keyword Optimization</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Professional Summary &amp; Achievement Enhancement</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>3 Resume Revision Rounds</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>100+ Domain-Specific Advanced Interview Preparation Kit</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Technical / Functional Interview Questions &amp; Answers</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>PDF + Editable Word Documents</span></li>
+                        </ul>
                     </div>
-                    <div class="text-sm text-gray-400 line-through mb-1">₹3,999</div>
-                    <div class="text-3xl font-black text-[#00b852] mb-6">₹1,499</div>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            2 Premium Resumes (ATS Friendly)
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            2 Professional Cover Letters
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Complete LinkedIn Optimization
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Ultimate Interview Prep Kit
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Interview Tips
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            3 Months WhatsApp Support
-                        </li>
-                    </ul>
-                    <div class="mb-6 p-3 bg-green-50 rounded-lg border border-green-100 text-[11px] leading-tight text-green-800 font-medium flex items-start">
-                        <span class="mr-2 opacity-80">📝</span>
-                        <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
+                    <div class="mt-auto pt-5 lg:mt-0">
+                        <p class="flex items-start gap-2.5 rounded-2xl h-full bg-gray-50 px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-600"><svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span><span class="font-semibold text-gray-900">Ideal for</span> working professionals and job switchers targeting multiple job roles.</span></p>
                     </div>
-                    <button onclick="openRazorpay('ultimate-career')" class="w-full bg-[#00b852] text-white hover:bg-[#009c45] transition-colors py-3 rounded-xl font-bold mt-auto">Buy Now</button>
-                    <button type="button" onclick="openExpertRequest('ultimate-career')" class="w-full mt-3 bg-white text-gray-600 border border-gray-200 hover:border-[#00b852] hover:text-[#00b852] hover:bg-[#ecfdf5] transition-colors py-2.5 rounded-xl font-semibold text-sm">Connect with an Expert</button>
-                </div>
+                    <div class="pt-3">
+                        <div>
+                            <button onclick="openRazorpay('pro-resume')" class="w-full bg-[#061610] text-white hover:bg-black rounded-xl py-3 font-bold transition-colors">Buy Now</button>
+                            <button type="button" onclick="openExpertRequest('pro-resume')" class="mt-2.5 w-full rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:border-[#00b852] hover:bg-[#ecfdf5] hover:text-[#00b852]">Connect with an Expert</button>
+                        </div>
+                    </div>
+                </article>
 
-                <!-- Card 4: LinkedIn Optimization -->
-                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 animate-on-scroll h-full flex flex-col" style="animation-delay: 0.3s;">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-bold text-gray-900">LinkedIn Optimization</h3>
-                        <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded">SAVE 67%</span>
+                <!-- LinkedIn Optimization -->
+                <article id="plan-linkedin-optimization" data-plan-id="linkedin-optimization" aria-labelledby="plan-linkedin-optimization-name" class="relative flex flex-col rounded-3xl border-2 border-gray-100 shadow-sm bg-white p-5 transition-shadow duration-300 hover:shadow-xl animate-on-scroll sm:p-6 lg:row-span-5 lg:grid lg:gap-y-0 lg:[grid-template-rows:subgrid] md:col-span-2 lg:col-span-1" style="animation-delay: 0.2s;">
+                    <header class="pb-4">
+                        <h3 id="plan-linkedin-optimization-name" class="text-xl font-bold tracking-tight text-gray-900">LinkedIn Optimization</h3>
+                        <p class="mt-1 text-sm font-semibold text-[#00b852]">Professional Branding</p>
+                    </header>
+                    <div data-price-panel class="rounded-2xl border border-gray-100 bg-gray-50 px-4 py-3.5">
+                        <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                            <span class="text-[2rem] font-black leading-none tracking-tight text-gray-900"><span class="sr-only">Price: </span><span data-price="1499">₹1,499</span></span>
+                            <s class="text-base font-medium text-gray-400"><span class="sr-only">Regular price: </span><span data-original-price="2999">₹2,999</span></s>
+                        </div>
+                        <div class="mt-2.5 flex items-center justify-between gap-3">
+                            <p class="text-sm font-semibold text-[#00b852]">You save ₹1,500</p>
+                            <span class="shrink-0 rounded-full bg-[#00b852] px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-white">50% off</span>
+                        </div>
+                        <div class="mt-3 flex items-center gap-2 border-t border-gray-200/80 pt-3 text-[13px] text-gray-600">
+                            <svg class="h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span data-delivery><span class="font-semibold text-gray-900">Same-Day Delivery</span></span>
+                        </div>
                     </div>
-                    <div class="text-sm text-gray-400 line-through mb-1">₹2,999</div>
-                    <div class="text-3xl font-black text-[#00b852] mb-6">₹999</div>
-                    
-                    <ul class="space-y-3 mb-8 text-sm text-gray-600">
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Complete Profile Makeover
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Keyword Optimization
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            Professional Banner Design
-                        </li>
-                        <li class="flex items-start">
-                            <svg class="w-5 h-5 text-[#00b852] mr-2 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                            100% Boosted Search Visibility
-                        </li>
-                    </ul>
-                    <div class="mb-6 p-3 bg-green-50 rounded-lg border border-green-100 text-[11px] leading-tight text-green-800 font-medium flex items-start">
-                        <span class="mr-2 opacity-80">📝</span>
-                        <span>Note: Once payment is done our team will connect with you for crafting your resumes and providing other services.</span>
+                    <div class="pt-5">
+                        <p class="mb-4 text-sm leading-relaxed text-gray-600">Make your LinkedIn profile more professional and recruiter-friendly.</p>
+                        <p class="mb-3 text-[11px] font-bold uppercase tracking-widest text-gray-400">What's included</p>
+                        <ul class="text-sm leading-snug text-gray-700 md:columns-2 md:gap-x-8 lg:columns-1">
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Complete Advanced LinkedIn Profile Audit</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Professional SEO-Friendly Headline</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Powerful About / Summary Section</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Experience Description Optimization</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Industry-Specific Skills &amp; Keyword Alignment</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Custom LinkedIn Banner Design</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Featured Section Recommendations</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>Recruiter-Friendly Profile Positioning</span></li>
+                            <li class="flex items-start gap-2.5 mb-2.5 break-inside-avoid last:mb-0"><svg class="mt-px h-4 w-4 shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg><span>1 Revision Round</span></li>
+                        </ul>
                     </div>
-                    <button onclick="openRazorpay('linkedin-optimization')" class="w-full bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors py-3 rounded-xl font-bold mt-auto">Buy Now</button>
-                    <button type="button" onclick="openExpertRequest('linkedin-optimization')" class="w-full mt-3 bg-white text-gray-600 border border-gray-200 hover:border-[#00b852] hover:text-[#00b852] hover:bg-[#ecfdf5] transition-colors py-2.5 rounded-xl font-semibold text-sm">Connect with an Expert</button>
+                    <div class="mt-auto pt-5 lg:mt-0">
+                        <p class="flex items-start gap-2.5 rounded-2xl h-full bg-gray-50 px-3.5 py-2.5 text-[13px] leading-relaxed text-gray-600"><svg class="mt-0.5 h-4 w-4 shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><span><span class="font-semibold text-gray-900">Ideal for</span> working professionals and job seekers looking to strengthen their LinkedIn presence.</span></p>
+                    </div>
+                    <div class="pt-3">
+                        <div>
+                            <button onclick="openRazorpay('linkedin-optimization')" class="w-full bg-[#061610] text-white hover:bg-black rounded-xl py-3 font-bold transition-colors">Buy Now</button>
+                            <button type="button" onclick="openExpertRequest('linkedin-optimization')" class="mt-2.5 w-full rounded-xl border border-gray-200 bg-white py-2.5 text-sm font-semibold text-gray-600 transition-colors hover:border-[#00b852] hover:bg-[#ecfdf5] hover:text-[#00b852]">Connect with an Expert</button>
+                        </div>
+                    </div>
+                </article>
                 </div>
+            </div>
+            <p class="mt-8 text-center text-xs text-gray-500">Once payment is done, our team will connect with you to craft your resume and deliver your services.</p>
+
+            <!-- Compare Our Plans: the three resume packages (LinkedIn Optimization is a separate package) -->
+            <div id="compare-plans" class="mt-16 animate-on-scroll">
+                <div class="mb-8 text-center">
+                    <h3 class="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">Compare Our Plans</h3>
+                    <p class="mt-2 text-gray-600">The Basic, Pro and Ultimate resume packages, side by side.</p>
+                </div>
+                <p class="mb-3 text-center text-xs font-medium text-gray-500 sm:hidden">Swipe sideways to see all three plans &rarr;</p>
+                <div class="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border-2 border-gray-100 bg-white shadow-sm">
+                    <!-- "relative" keeps the screen-reader-only labels (absolutely positioned) inside this scroll box; without it they
+                         escape it and make the whole page wider than a phone screen. -->
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full min-w-[560px] border-collapse text-sm">
+                            <caption class="sr-only">Features of the Basic, Pro and Ultimate resume plans</caption>
+                            <thead class="border-b border-gray-200">
+                                <tr>
+                                <th scope="col" class="sticky left-0 z-10 bg-white px-5 pb-5 pt-6 text-left align-bottom text-xs font-bold uppercase tracking-widest text-gray-400">Features</th>
+                                <th scope="col" class="px-4 pb-5 pt-6 text-center align-top">
+                                    <span class="block text-base font-bold text-gray-900">Basic</span>
+                                    <span class="block text-sm font-semibold text-gray-500" data-compare-price="basic-resume">₹899</span>
+                                </th>
+                                <th scope="col" class="px-4 pb-5 pt-6 text-center align-top">
+                                    <span class="block text-base font-bold text-gray-900">Pro</span>
+                                    <span class="block text-sm font-semibold text-gray-500" data-compare-price="pro-resume">₹1,299</span>
+                                    <span class="mt-1.5 inline-block whitespace-nowrap rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-800">Best Value</span>
+                                </th>
+                                <th scope="col" class="px-4 pb-5 pt-6 text-center align-top bg-[#ecfdf5]">
+                                    <span class="block text-base font-bold text-gray-900">Ultimate</span>
+                                    <span class="block text-sm font-semibold text-gray-500" data-compare-price="ultimate-career">₹1,999</span>
+                                    <span class="mt-1.5 inline-block whitespace-nowrap rounded-full bg-[#00b852] px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-white">Most Recommended</span>
+                                </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bg-white">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-white">ATS-Friendly Resumes</th>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">1</span></td>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">2</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="font-semibold text-gray-900">2</span></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-gray-50">Customized Cover Letters</th>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">1</span></td>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">2</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="font-semibold text-gray-900">2</span></td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-white">Role-Specific Optimization</th>
+                                <td class="px-4 py-3 text-center"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                                <td class="px-4 py-3 text-center"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="inline-flex items-center justify-center gap-1.5 font-semibold text-gray-900"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Advanced</span></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-gray-50">Resume Revisions</th>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">1</span></td>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">3</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="font-semibold text-gray-900">3</span></td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-white">Interview Preparation Kit</th>
+                                <td class="px-4 py-3 text-center"><span class="text-lg leading-none text-gray-300" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td>
+                                <td class="px-4 py-3 text-center"><span class="font-semibold text-gray-900">100+</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="font-semibold text-gray-900">200+</span></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-gray-50">LinkedIn Optimization</th>
+                                <td class="px-4 py-3 text-center"><span class="text-lg leading-none text-gray-300" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td>
+                                <td class="px-4 py-3 text-center"><span class="text-lg leading-none text-gray-300" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                            </tr>
+                            <tr class="bg-white">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-white">Expert Career Guidance</th>
+                                <td class="px-4 py-3 text-center"><span class="text-lg leading-none text-gray-300" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td>
+                                <td class="px-4 py-3 text-center"><span class="text-lg leading-none text-gray-300" aria-hidden="true">&mdash;</span><span class="sr-only">Not included</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="font-semibold text-gray-900">60-Minute Session</span></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <th scope="row" class="sticky left-0 z-10 px-5 py-3 text-left font-medium text-gray-700 bg-gray-50">PDF + Editable Word</th>
+                                <td class="px-4 py-3 text-center"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                                <td class="px-4 py-3 text-center"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                                <td class="px-4 py-3 text-center bg-[#ecfdf5]/60"><span class="inline-flex justify-center"><svg class="h-[18px] w-[18px] shrink-0 text-[#00b852]" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg></span><span class="sr-only">Included</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <p class="mt-6 text-center text-sm text-gray-600">Only need LinkedIn? <a href="#plan-linkedin-optimization" class="font-semibold text-[#00b852] hover:underline">LinkedIn Optimization</a> is a separate standalone package (<span data-compare-price="linkedin-optimization">₹1,499</span>) and is not part of this comparison.</p>
             </div>
         </div>
     </section>
@@ -853,7 +1018,7 @@
                 <div class="text-xs font-bold text-gray-900 uppercase tracking-widest mb-4">Subscribe To Our Newsletter</div>
                 <form class="flex" onsubmit="event.preventDefault();" data-newsletter novalidate>
                     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
-                    <input type="email" name="email" required autocomplete="email" aria-label="Email address" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56">
+                    <input type="email" name="email" required autocomplete="email" aria-label="Email address" placeholder="Enter your email" class="bg-gray-100 text-gray-800 text-sm px-4 py-3 rounded-l-lg border-none focus:ring-2 focus:ring-primary outline-none w-56 min-w-0">
                     <button type="submit" class="gradient-btn text-white text-sm font-bold px-6 py-3 rounded-r-lg hover:shadow-md transition-shadow">
                         Subscribe
                     </button>
@@ -863,10 +1028,19 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919876543210" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white px-5 py-3 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2" target="_blank">
-        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937.001 3.826-3.113 6.938-6.938 6.938z"></path></svg>
-        <span class="text-sm font-medium">Chat with us on WhatsApp</span>
+    <!-- Floating WhatsApp button: chat with EdgeCareer on +91 73868 39818 with this message already typed:
+         "Hi, I'm interested in your Premium Resume & Career Upgrade Plans. Please share more details."
+         Opens the WhatsApp app on phones and WhatsApp Web / Desktop in a new tab on computers.
+         Phones show only the round icon; larger screens also show the label and the number.
+         The same markup is on index.html and career-paths.html. -->
+    <a href="https://wa.me/917386839818?text=Hi%2C%20I%27m%20interested%20in%20your%20Premium%20Resume%20%26%20Career%20Upgrade%20Plans.%20Please%20share%20more%20details." target="_blank" rel="noopener noreferrer" data-whatsapp-chat aria-label="Chat with us on WhatsApp at +91 73868 39818 (opens in a new tab)" title="Chat with us on WhatsApp: +91 73868 39818" class="group fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-3 rounded-full shadow-lg sm:bg-white sm:border sm:border-gray-200 sm:py-1.5 sm:pl-1.5 sm:pr-5 hover:shadow-xl hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40 transition-all duration-300">
+        <span class="flex items-center justify-center w-14 h-14 sm:w-11 sm:h-11 shrink-0 rounded-full bg-[#25D366] text-white group-hover:bg-[#1ebe5d] transition-colors">
+            <svg class="w-7 h-7 sm:w-6 sm:h-6" aria-hidden="true" focusable="false" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 3.825 0 6.938 3.112 6.938 6.937.001 3.826-3.113 6.938-6.938 6.938z"></path></svg>
+        </span>
+        <span class="hidden sm:flex flex-col leading-tight">
+            <span class="text-[11px] font-medium text-gray-500">Chat with us on WhatsApp</span>
+            <span class="text-sm font-bold text-gray-900 tracking-wide">+91 73868 39818</span>
+        </span>
     </a>
 
     <!-- Intersection Observer for Scroll Animations -->
